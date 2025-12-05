@@ -4,31 +4,57 @@ import { featuredReviews, aggregateRating } from '../data/reviews.ts';
 interface Props {
   showAll?: boolean;
   limit?: number;
+  currentLang?: string;
 }
 
 const facebookReviewsUrl = "https://www.facebook.com/profile.php?id=61579363291995&sk=reviews";
-const { showAll = false, limit = 6 } = Astro.props;
+const { showAll = false, limit = 6, currentLang = 'fr' } = Astro.props;
 const reviewsToShow = showAll ? featuredReviews : featuredReviews.slice(0, limit);
+
+// Translations
+const t = {
+  fr: {
+    title: "Avis Clients",
+    verified: "Avis Vérifiés",
+    viewFacebook: "Voir sur Facebook",
+    allReviews: "Voir tous les avis sur Facebook"
+  },
+  en: {
+    title: "Customer Reviews",
+    verified: "Verified Reviews",
+    viewFacebook: "View on Facebook",
+    allReviews: "See all reviews on Facebook"
+  },
+  he: {
+    title: "ביקורות לקוחות",
+    verified: "ביקורות מאומתות",
+    viewFacebook: "צפה בפייסבוק",
+    allReviews: "צפה בכל הביקורות בפייסבוק"
+  }
+};
+
+const labels = t[currentLang] || t.fr;
+const isRtl = currentLang === 'he';
 ---
 
-<section class="reviews-section" aria-label="Avis clients">
+<section class="reviews-section" aria-label={labels.title} dir={isRtl ? 'rtl' : 'ltr'}>
   <div class="container">
     <div class="reviews-header">
-      <h2 class="reviews-title">Avis Clients</h2>
+      <h2 class="reviews-title">{labels.title}</h2>
       <div class="rating-badge">
         <div class="rating-stars">★★★★★</div>
         <div class="rating-info">
           <span class="rating-value">{aggregateRating.ratingValue}</span>
-          <span class="verified-badge">Avis Vérifiés</span>
+          <span class="verified-badge">{labels.verified}</span>
         </div>
         <a 
           href={facebookReviewsUrl}
           target="_blank" 
           rel="noopener noreferrer" 
           class="facebook-badge"
-          aria-label="Voir tous les avis sur Facebook"
+          aria-label={labels.viewFacebook}
         >
-          Voir sur Facebook
+          {labels.viewFacebook}
         </a>
       </div>
     </div>
@@ -49,7 +75,7 @@ const reviewsToShow = showAll ? featuredReviews : featuredReviews.slice(0, limit
               <strong itemprop="name">{review.author}</strong>
             </div>
             <time class="review-date" datetime={review.datePublished} itemprop="datePublished">
-              {new Date(review.datePublished).toLocaleDateString('fr-FR', { 
+              {new Date(review.datePublished).toLocaleDateString(currentLang === 'he' ? 'he-IL' : currentLang === 'en' ? 'en-US' : 'fr-FR', { 
                 year: 'numeric', 
                 month: 'long', 
                 day: 'numeric' 
@@ -67,7 +93,7 @@ const reviewsToShow = showAll ? featuredReviews : featuredReviews.slice(0, limit
         rel="noopener noreferrer" 
         class="btn btn-primary"
       >
-        Voir tous les avis sur Facebook
+        {labels.allReviews}
       </a>
     </div>
   </div>

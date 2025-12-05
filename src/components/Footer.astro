@@ -1,41 +1,109 @@
 ---
+interface Props {
+  currentLang?: string;
+}
+
+const { currentLang = "fr" } = Astro.props;
 const currentYear = new Date().getFullYear();
+
+// Translations
+const t = {
+  fr: {
+    serving: "Desservant : Nice, Cannes, Antibes, Monaco, Saint-Tropez",
+    licensed: "VTC Licencié",
+    luxury: "Flotte Premium",
+    nav: "Navigation",
+    home: "Accueil",
+    services: "Services",
+    airport: "Aéroport Nice",
+    contact: "Contact",
+    legal: "Mentions Légales",
+    premium: "Services Premium",
+    transfers: "Transferts Aéroport (Nice NCE)",
+    tours: "Circuits & Visites Privées",
+    special: "Tours Spéciaux",
+    kosher: "Conciergerie Casher",
+    vip: "Sécurité & Accueil VIP",
+    rights: "Tous droits réservés.",
+    experience: "Expérience de Voyage Premium."
+  },
+  en: {
+    serving: "Serving: Nice, Cannes, Antibes, Monaco, Saint-Tropez",
+    licensed: "Licensed VTC",
+    luxury: "Luxury Fleet",
+    nav: "Navigation",
+    home: "Home",
+    services: "Services",
+    airport: "Nice Airport",
+    contact: "Contact Us",
+    legal: "Legal & Privacy",
+    premium: "Premium Services",
+    transfers: "Airport Transfers (Nice NCE)",
+    tours: "Private Tours & Sightseeing",
+    special: "Special Tours",
+    kosher: "Kosher Dining Concierge",
+    vip: "Security & VIP Handling",
+    rights: "All rights reserved.",
+    experience: "Luxury Travel Experience."
+  },
+  he: {
+    serving: "שירות: ניס, קאן, אנטיב, מונקו, סן טרופז",
+    licensed: "נהג פרטי מורשה",
+    luxury: "צי יוקרתי",
+    nav: "ניווט",
+    home: "בית",
+    services: "שירותים",
+    airport: "שדה התעופה ניס",
+    contact: "צור קשר",
+    legal: "מידע משפטי",
+    premium: "שירותי פרימיום",
+    transfers: "הסעות משדה התעופה (ניס)",
+    tours: "סיורים פרטיים",
+    special: "סיורים מיוחדים",
+    kosher: "קונסיירז' כשר",
+    vip: "אבטחה ושירות VIP",
+    rights: "כל הזכויות שמורות.",
+    experience: "חווית נסיעות יוקרתית."
+  }
+};
+
+const labels = t[currentLang] || t.fr;
+const isRtl = currentLang === 'he';
 ---
 
-<footer class="site-footer" role="contentinfo" aria-label="Footer">
+<footer class="site-footer" role="contentinfo" aria-label="Footer" dir={isRtl ? 'rtl' : 'ltr'}>
   <div class="container">
     <div class="footer-grid">
       <div>
         <strong>GALRIVIERA</strong><br>
-        <span class="text-sm opacity-75">Operated by SASU Absig</span><br>
+        <span class="text-sm opacity-75">SASU Absig</span><br>
         120 route de macarons<br>
-        06560 Valbonne<br>
-        France<br>
+        06560 Valbonne, France<br>
         Tel: <a href="tel:+33682267342">+33 6 82 26 73 42</a><br>
-        Serving: Nice, Cannes, Antibes, Monaco, Saint-Tropez.
+        {labels.serving}
         <div class="footer-badges mt-4" aria-label="Legal Info">
-          <span class="footer-badge">Licensed VTC</span>
-          <span class="footer-badge">Luxury Fleet</span>
+          <span class="footer-badge">{labels.licensed}</span>
+          <span class="footer-badge">{labels.luxury}</span>
         </div>
       </div>
       <nav class="footer-nav" aria-label="Footer Navigation">
-        <strong>Navigation</strong>
-        <a href="/">Home</a>
-        <a href="/services">Services</a>
-        <a href="/vtc-nice-aeroport-transfert">Nice Airport</a>
+        <strong>{labels.nav}</strong>
+        <a href="/">{labels.home}</a>
+        <a href="/services">{labels.services}</a>
+        <a href="/vtc-nice-aeroport-transfert">{labels.airport}</a>
         <a href="/vtc-nice-monaco-monte-carlo">Monaco</a>
         <a href="/vtc-nice-cannes-festival">Cannes</a>
         <a href="/vtc-nice-saint-tropez">Saint-Tropez</a>
-        <a href="/contact">Contact Us</a>
-        <a href="/mentions-legales-rgpd">Legal & Privacy</a>
+        <a href="/contact">{labels.contact}</a>
+        <a href="/mentions-legales-rgpd">{labels.legal}</a>
       </nav>
       <div>
-        <strong>Premium Services</strong><br>
-        Airport Transfers (Nice NCE)<br>
-        Private Tours & Sightseeing<br>
-        Special Tours<br>
-        Kosher Dining Concierge<br>
-        Security & VIP Handling<br>
+        <strong>{labels.premium}</strong><br>
+        {labels.transfers}<br>
+        {labels.tours}<br>
+        {labels.special}<br>
+        {labels.kosher}<br>
+        {labels.vip}<br>
         <div class="footer-social">
           <a href="https://wa.me/33682267342" target="_blank" rel="noopener noreferrer">
             WhatsApp
@@ -47,8 +115,8 @@ const currentYear = new Date().getFullYear();
       </div>
     </div>
     <div class="footer-bottom">
-      <span>GALRIVIERA. All rights reserved. © {currentYear}</span>
-      <span>Luxury Travel Experience.</span>
+      <span>GALRIVIERA. {labels.rights} © {currentYear}</span>
+      <span>{labels.experience}</span>
     </div>
   </div>
 </footer>

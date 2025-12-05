@@ -5,6 +5,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import Chatbot from '../components/Chatbot.astro';
 import ReviewsDisplay from '../components/ReviewsDisplay.astro';
+import RelatedServices from '../components/RelatedServices.astro';
 import { allReviews, aggregateRating } from '../data/reviews.ts';
 
 import '../styles/base.css';
@@ -312,15 +313,16 @@ const isRtl = currentLang === 'he';
   </head>
   <body data-page={currentPage}>
     <a href="#main-content" class="skip-link">Aller au contenu principal</a>
-    <Header currentPage={currentPage} />
+    <Header currentPage={currentPage} currentLang={currentLang} />
     {breadcrumbItems && breadcrumbItems.length > 0 && (
       <Breadcrumb items={breadcrumbItems} />
     )}
     <main id="main-content" role="main">
       <slot />
     </main>
-    {currentPage !== "avis-clients" && <ReviewsDisplay limit={6} />}
-    <Footer />
+    <RelatedServices currentPage={currentPage} currentLang={currentLang} />
+    {currentPage !== "avis-clients" && <ReviewsDisplay limit={6} currentLang={currentLang} />}
+    <Footer currentLang={currentLang} />
     <WhatsAppButton />
     <Chatbot currentLang={currentLang} />
 
