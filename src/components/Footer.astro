@@ -6,80 +6,85 @@ interface Props {
 const { currentLang = "fr" } = Astro.props;
 const currentYear = new Date().getFullYear();
 
-// Translations
 const t = {
   fr: {
-    serving: "Desservant : Nice, Cannes, Antibes, Monaco, Saint-Tropez",
-    licensed: "VTC Licencié",
-    luxury: "Flotte Premium",
+    serving: "Zones desservies : Nice, Cannes, Antibes, Monaco, Saint-Tropez",
+    licensed: "Chauffeur Privé VTC",
+    luxury: "Service Sur Mesure",
     nav: "Navigation",
     home: "Accueil",
     services: "Services",
-    airport: "Aéroport Nice",
-    contact: "Contact",
-    legal: "Mentions Légales",
-    premium: "Services Premium",
+    airport: "Aéroport Nice (NCE)",
+    monaco: "Monaco & Monte-Carlo",
+    cannes: "Cannes & Croisette",
+    stTropez: "Saint-Tropez",
+    contact: "Contact & Devis",
+    legal: "Mentions Légales & CGV",
+    premium: "Prestations",
     transfers: "Transferts Aéroport (Nice NCE)",
-    tours: "Circuits & Visites Privées",
-    special: "Tours Spéciaux",
-    kosher: "Conciergerie Casher",
-    vip: "Sécurité & Accueil VIP",
+    tours: "Excursions Privées",
+    business: "Déplacements d'Affaires & Congrès",
+    hourly: "Mise à Disposition Chauffeur",
     rights: "Tous droits réservés.",
-    experience: "Expérience de Voyage Premium."
+    experience: "Chauffeur Privé Côte d'Azur.",
+    urls: {
+      home: "/",
+      services: "/services",
+      airport: "/vtc-nice-aeroport-transfert",
+      monaco: "/vtc-nice-monaco-monte-carlo",
+      cannes: "/vtc-nice-cannes-festival",
+      stTropez: "/vtc-nice-saint-tropez",
+      contact: "/contact",
+      legal: "/mentions-legales-rgpd",
+      hourly: "/mise-a-disposition-chauffeur-nice"
+    }
   },
   en: {
     serving: "Serving: Nice, Cannes, Antibes, Monaco, Saint-Tropez",
-    licensed: "Licensed VTC",
-    luxury: "Luxury Fleet",
+    licensed: "Private Chauffeur VTC",
+    luxury: "Tailored Service",
     nav: "Navigation",
     home: "Home",
-    services: "Services",
-    airport: "Nice Airport",
-    contact: "Contact Us",
+    services: "Nice Airport Transfer",
+    airport: "Nice Airport to Monaco",
+    monaco: "Monaco & Monte-Carlo",
+    cannes: "Cannes & Croisette",
+    stTropez: "Saint-Tropez",
+    contact: "Request a Quote",
     legal: "Legal & Privacy",
-    premium: "Premium Services",
+    premium: "Services",
     transfers: "Airport Transfers (Nice NCE)",
-    tours: "Private Tours & Sightseeing",
-    special: "Special Tours",
-    kosher: "Kosher Dining Concierge",
-    vip: "Security & VIP Handling",
+    tours: "Private Excursions",
+    business: "Business & Congresses",
+    hourly: "Hourly Chauffeur Service",
     rights: "All rights reserved.",
-    experience: "Luxury Travel Experience."
-  },
-  he: {
-    serving: "שירות: ניס, קאן, אנטיב, מונקו, סן טרופז",
-    licensed: "נהג פרטי מורשה",
-    luxury: "צי יוקרתי",
-    nav: "ניווט",
-    home: "בית",
-    services: "שירותים",
-    airport: "שדה התעופה ניס",
-    contact: "צור קשר",
-    legal: "מידע משפטי",
-    premium: "שירותי פרימיום",
-    transfers: "הסעות משדה התעופה (ניס)",
-    tours: "סיורים פרטיים",
-    special: "סיורים מיוחדים",
-    kosher: "קונסיירז' כשר",
-    vip: "אבטחה ושירות VIP",
-    rights: "כל הזכויות שמורות.",
-    experience: "חווית נסיעות יוקרתית."
+    experience: "French Riviera Private Chauffeur.",
+    urls: {
+      home: "/en/nice-airport-transfer-private-driver",
+      services: "/en/chauffeur-service-by-the-hour-nice",
+      airport: "/en/nice-airport-to-monaco-transfer",
+      monaco: "/en/nice-to-monaco-transfer-luxury",
+      cannes: "/en/nice-to-cannes-transfer-festival",
+      stTropez: "/en/nice-to-st-tropez-transfer",
+      contact: "#booking-widget",
+      legal: "/mentions-legales-rgpd",
+      hourly: "/en/chauffeur-service-by-the-hour-nice"
+    }
   }
 };
 
-const labels = t[currentLang] || t.fr;
-const isRtl = currentLang === 'he';
+const labels = t[currentLang === 'en' ? 'en' : 'fr'];
 ---
 
-<footer class="site-footer" role="contentinfo" aria-label="Footer" dir={isRtl ? 'rtl' : 'ltr'}>
+<footer class="site-footer" role="contentinfo" aria-label="Footer">
   <div class="container">
     <div class="footer-grid">
       <div>
-        <strong>GALRIVIERA</strong><br>
-        <span class="text-sm opacity-75">SASU Absig</span><br>
-        120 route de macarons<br>
-        06560 Valbonne, France<br>
-        Tel: <a href="tel:+33682267342">+33 6 82 26 73 42</a><br>
+        <strong>GALRIVIERA</strong><br />
+        <span class="text-sm opacity-75">ABSIG CONSULTING · EVTC006230586</span><br />
+        120 route des Macarons<br />
+        06560 Valbonne, France<br />
+        Tel: <a href="tel:+33682267342">+33 6 82 26 73 42</a><br />
         {labels.serving}
         <div class="footer-badges mt-4" aria-label="Legal Info">
           <span class="footer-badge">{labels.licensed}</span>
@@ -88,29 +93,26 @@ const isRtl = currentLang === 'he';
       </div>
       <nav class="footer-nav" aria-label="Footer Navigation">
         <strong>{labels.nav}</strong>
-        <a href="/">{labels.home}</a>
-        <a href="/services">{labels.services}</a>
-        <a href="/vtc-nice-aeroport-transfert">{labels.airport}</a>
-        <a href="/vtc-nice-monaco-monte-carlo">Monaco</a>
-        <a href="/vtc-nice-cannes-festival">Cannes</a>
-        <a href="/vtc-nice-saint-tropez">Saint-Tropez</a>
-        <a href="/contact">{labels.contact}</a>
-        <a href="/mentions-legales-rgpd">{labels.legal}</a>
+        <a href={labels.urls.home}>{labels.home}</a>
+        <a href={labels.urls.services}>{labels.services}</a>
+        <a href={labels.urls.airport}>{labels.airport}</a>
+        <a href={labels.urls.monaco}>{labels.monaco}</a>
+        <a href={labels.urls.cannes}>{labels.cannes}</a>
+        <a href={labels.urls.stTropez}>{labels.stTropez}</a>
+        <a href={labels.urls.contact}>{labels.contact}</a>
+        <a href={labels.urls.legal}>{labels.legal}</a>
       </nav>
       <div>
-        <strong>{labels.premium}</strong><br>
-        {labels.transfers}<br>
-        {labels.tours}<br>
-        {labels.special}<br>
-        {labels.kosher}<br>
-        {labels.vip}<br>
+        <strong>{labels.premium}</strong>
+        <nav class="footer-nav" aria-label="Services">
+          <a href={labels.urls.airport}>{labels.transfers}</a>
+          <a href={labels.urls.monaco}>{labels.tours}</a>
+          <a href={labels.urls.cannes}>{labels.business}</a>
+          <a href={labels.urls.hourly}>{labels.hourly}</a>
+        </nav>
         <div class="footer-social">
-          <a href="https://wa.me/33682267342" target="_blank" rel="noopener noreferrer">
-            WhatsApp
-          </a>
-          <a href="https://www.facebook.com/profile.php?id=61579363291995" target="_blank" rel="noopener noreferrer">
-            Facebook
-          </a>
+          <a href="https://wa.me/33682267342" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a href="https://www.facebook.com/profile.php?id=61579363291995" target="_blank" rel="noopener noreferrer">Facebook</a>
         </div>
       </div>
     </div>

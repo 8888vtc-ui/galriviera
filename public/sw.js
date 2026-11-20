@@ -1,29 +1,22 @@
 // Service Worker pour PWA et cache offline - GALRIVIERA
-const CACHE_NAME = 'galriviera-v1';
-const RUNTIME_CACHE = 'galriviera-runtime-v1';
+const CACHE_NAME = 'galriviera-v2';
+const RUNTIME_CACHE = 'galriviera-runtime-v2';
 
-// Assets critiques à mettre en cache immédiatement
 const CRITICAL_ASSETS = [
   '/',
-  '/assets/css/base.css',
-  '/assets/css/components.css',
-  '/assets/css/utilities.css',
-  '/assets/css/performance.css',
-  '/assets/fonts/poppins-v20-latin-regular.woff2',
-  '/assets/fonts/poppins-v20-latin-600.woff2',
-  '/assets/fonts/poppins-v20-latin-700.woff2'
+  '/manifest.json',
+  '/assets/img/favicon/favicon.svg'
 ];
 
-// Installation
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => cache.addAll(CRITICAL_ASSETS))
       .then(() => self.skipWaiting())
+      .catch(() => {})
   );
 });
 
-// Activation
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -36,23 +29,20 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch - Network First pour HTML, Cache First pour assets
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Ignorer les requêtes non-GET et externes
   if (request.method !== 'GET' || url.origin !== location.origin) return;
 
-  // HTML : Network First
   if (request.headers.get('accept')?.includes('text/html')) {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          const responseClone = response.clone();
-          caches.open(RUNTIME_CACHE).then((cache) => {
-            cache.put(request, responseClone);
-          });
+          if (response.status === 200) {
+            const responseClone = response.clone();
+            caches.open(RUNTIME_CACHE).then((cache) => cache.put(request, responseClone));
+          }
           return response;
         })
         .catch(() => caches.match(request))
@@ -60,21 +50,16 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Assets : Cache First
   event.respondWith(
-    caches.match(request)
-      .then((cached) => {
-        if (cached) return cached;
-        return fetch(request).then((response) => {
-          if (response.status === 200) {
-            const responseClone = response.clone();
-            caches.open(RUNTIME_CACHE).then((cache) => {
-              cache.put(request, responseClone);
-            });
-          }
-          return response;
-        });
-      })
+    caches.match(request).then((cached) => {
+      if (cached) return cached;
+      return fetch(request).then((response) => {
+        if (response.status === 200) {
+          const responseClone = response.clone();
+          caches.open(RUNTIME_CACHE).then((cache) => cache.put(request, responseClone));
+        }
+        return response;
+      });
+    })
   );
 });
-

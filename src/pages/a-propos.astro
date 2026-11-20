@@ -3,14 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="À Propos de Galriviera | Votre Chauffeur VTC de Confiance sur la Côte d'Azur"
-  description="Découvrez Galriviera, service VTC premium basé à Valbonne. Équipe expérimentée, flotte luxe Mercedes et Tesla, engagement qualité. Votre partenaire mobilité privilégié sur la Côte d'Azur depuis 2022."
+  title="À Propos de Galriviera | Chauffeur VTC Côte d'Azur"
+  description="Découvrez Galriviera, service VTC premium basé à Valbonne. Équipe expérimentée, flotte luxe Mercedes et Tesla, engagement qualité. Votre partenaire mobilité."
   currentLang="fr"
+
+  alternateLinks={{ fr: "a-propos", en: "nice-airport-transfer-private-driver" }}
 >
   <section class="hero-banner" style="min-height: 50vh;">
     <div class="hero-image-container">
       <div class="hero-overlay"></div>
-      <img src="/assets/img/hero/hero-riviera.webp" alt="À propos de Galriviera - VTC Premium Côte d'Azur" class="hero-background-image"/>
+      <img src="/assets/img/hero/hero-home-riviera.webp" alt="À propos de Galriviera - VTC Premium Côte d'Azur" class="hero-background-image"/>
     </div>
     <div class="hero-content" data-aos="fade-up">
       <h1 class="hero-title">À Propos de Galriviera</h1>
@@ -25,7 +27,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Section Histoire -->
         <section class="about-section" data-aos="fade-up">
           <div class="section-image">
-            <img src="/assets/img/gallery/galriviera-luxury-1.webp" alt="Mercedes S-Class Galriviera" loading="lazy"/>
+            <img src="/assets/img/hero/hero-home-riviera.webp" alt="Mercedes S-Class Galriviera" loading="lazy"/>
           </div>
           <div class="section-text">
             <h2>Notre Histoire</h2>
@@ -66,7 +68,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="value-card">
               <span class="value-icon">🌍</span>
               <h3>Ouverture Internationale</h3>
-              <p>La Côte d'Azur accueille le monde entier. C'est pourquoi nos chauffeurs parlent couramment français, anglais, et pour certains hébreu. Nous comprenons les spécificités culturelles de notre clientèle internationale, notamment les besoins liés au Shabbat et aux traditions culinaires casher.</p>
+              <p>La Côte d'Azur accueille le monde entier. C'est pourquoi notre service est assuré couramment en français et en anglais, avec un accueil soigné, ponctuel et parfaitement adapté aux attentes d'une clientèle internationale.</p>
             </div>
           </div>
         </section>
@@ -74,25 +76,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Section Équipe -->
         <section class="about-section reverse" data-aos="fade-up">
           <div class="section-image">
-            <img src="/assets/img/gallery/galriviera-luxury-3.webp" alt="Chauffeur professionnel Galriviera" loading="lazy"/>
+            <img src="/assets/img/gallery/fleet-van-interior.webp" alt="Intérieur salon cuir Mercedes Classe V Galriviera" loading="lazy"/>
           </div>
           <div class="section-text">
-            <h2>Notre Équipe d'Exception</h2>
+            <h2>Votre Chauffeur Privé sur la Côte d'Azur</h2>
             <p>
-              Le cœur de Galriviera, ce sont nos <strong>chauffeurs</strong>. Recrutés selon des critères stricts, ils passent par un processus de sélection rigoureux incluant vérification des antécédents, tests de conduite avancés, et formation aux standards de l'hôtellerie de luxe.
+              Le cœur de Galriviera (<strong>ABSIG CONSULTING — N° EVTC006230586</strong>), c'est la qualité de l'accompagnement : conduite souple, ponctualité rigoureuse, discrétion et sens du service inspiré de l'hôtellerie haut de gamme.
             </p>
             <p>
-              Au-delà de la maîtrise parfaite de la conduite, nos chauffeurs sont de véritables <strong>ambassadeurs de la région</strong>. Ils connaissent les meilleurs restaurants, les routes panoramiques les plus spectaculaires, les horaires des musées, et peuvent vous recommander des activités selon vos goûts.
-            </p>
-            <p>
-              Nous sommes particulièrement fiers de notre équipe de chauffeurs <strong>parlant hébreu</strong>, spécialement formés pour accueillir les voyageurs israéliens. Ils connaissent les synagogues locales, les restaurants casher, et peuvent organiser des circuits sur les sites mémoriaux de la région.
+              Au-delà du trajet, nous connaissons parfaitement les meilleurs restaurants, les routes panoramiques, les terminaux de l'aéroport de Nice et les grands événements de la Riviera (Cannes, Monaco, Saint-Tropez).
             </p>
             <ul class="feature-list">
-              <li>✓ Formation continue aux techniques de conduite douce</li>
-              <li>✓ Connaissance encyclopédique de la Côte d'Azur</li>
-              <li>✓ Tenue impeccable (costume, cravate)</li>
-              <li>✓ Multilingues : Français, Anglais, Hébreu</li>
-              <li>✓ Certifiés premiers secours</li>
+              <li>✓ Exploitant VTC officiel inscrit au registre : EVTC006230586</li>
+              <li>✓ Connaissance approfondie de la Côte d'Azur</li>
+              <li>✓ Accueil soigné, ponctuel et discret</li>
+              <li>✓ Service bilingue : Français &amp; Anglais</li>
+              <li>✓ Véhicules climatisés, spacieux et entretenus avec soin</li>
             </ul>
           </div>
         </section>
@@ -101,44 +100,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <section class="fleet-section" data-aos="fade-up">
           <h2>Notre Flotte Premium</h2>
           <p class="section-intro">
-            Nous ne faisons aucun compromis sur la qualité de nos véhicules. Notre flotte est composée exclusivement de modèles récents (moins de 2 ans), entretenus par des concessionnaires agréés et équipés de toutes les options de confort.
+            Des véhicules réels, spacieux et soigneusement entretenus pour vos transferts privés, déplacements d'affaires et excursions sur la Côte d'Azur.
           </p>
           <div class="fleet-grid">
             <div class="fleet-item">
-              <img src="/assets/img/gallery/galriviera-luxury-2.webp" alt="Mercedes Classe S" loading="lazy"/>
-              <h3>Mercedes Classe S</h3>
-              <p>Le summum du luxe automobile. Sièges massants, climatisation 4 zones, vitres surteintées, insonorisation parfaite. Idéale pour les trajets business ou les occasions spéciales. Capacité : 3 passagers.</p>
+              <img src="/assets/img/gallery/fleet-van-luxe.webp" alt="Mercedes Classe V 220d Galriviera" loading="lazy"/>
+              <h3>Mercedes Classe V 220d (7 places)</h3>
+              <p>Van luxe noir avec salon cuir face-à-face, climatisation arrière, chargeurs à bord et grand volume bagages. Idéal pour les familles, groupes VIP et transferts aéroport.</p>
             </div>
             <div class="fleet-item">
-              <img src="/assets/img/gallery/galriviera-luxury-4.webp" alt="Mercedes Classe E" loading="lazy"/>
-              <h3>Mercedes Classe E</h3>
-              <p>L'élégance berline par excellence. Confort optimal, technologie de pointe, espace généreux pour les bagages. Parfaite pour les transferts aéroport et les déplacements quotidiens. Capacité : 3 passagers.</p>
+              <img src="/assets/img/gallery/fleet-sedan-riviera.webp" alt="Peugeot 5008 GT Galriviera" loading="lazy"/>
+              <h3>SUV Executive — Peugeot 5008 GT</h3>
+              <p>SUV noir élégant avec toit panoramique, sellerie cuir &amp; alcantara, tablettes aviation et prises USB à l'arrière. Parfait pour les trajets affaires et transferts privés.</p>
             </div>
             <div class="fleet-item">
-              <img src="/assets/img/gallery/galriviera-luxury-5.webp" alt="Mercedes Classe V" loading="lazy"/>
-              <h3>Mercedes Classe V</h3>
-              <p>Le van de luxe pour les groupes et les familles. Sièges en cuir, configuration salon, tables escamotables, espace bagages XXL. Idéal pour les transferts avec bagages nombreux. Capacité : jusqu'à 7 passagers.</p>
+              <img src="/assets/img/gallery/fleet-van-interior.webp" alt="Intérieur salon cuir Mercedes Classe V" loading="lazy"/>
+              <h3>Salon Cuir 7 Places</h3>
+              <p>Sièges en cuir noir configuration salon face-à-face, climatisation indépendante, espace bagages généreux et confort optimal pour les familles et groupes jusqu'à 7 passagers.</p>
             </div>
             <div class="fleet-item">
-              <img src="/assets/img/gallery/galriviera-luxury-6.webp" alt="Tesla Model S" loading="lazy"/>
-              <h3>Tesla Model S</h3>
-              <p>L'innovation au service du luxe. 100% électrique, silencieuse, avec une accélération impressionnante et un intérieur futuriste. Pour les clients soucieux de l'environnement sans compromis sur le prestige. Capacité : 3 passagers.</p>
+              <img src="/assets/img/gallery/service-interior-comfort.webp" alt="Intérieur toit panoramique Peugeot 5008 GT" loading="lazy"/>
+              <h3>Toit Panoramique &amp; Tablettes</h3>
+              <p>Habitacle lumineux avec toit panoramique, tablettes arrière, prises USB et sièges enfants sur demande pour tous vos trajets entre Nice, Cannes, Monaco et Saint-Tropez.</p>
             </div>
           </div>
         </section>
 
         <!-- Section Légale -->
         <section class="legal-section" data-aos="fade-up">
-          <h2>Informations Légales & Garanties</h2>
+          <h2>Informations Légales &amp; Garanties</h2>
           <div class="legal-grid">
             <div class="legal-card">
-              <h3>🏢 Société</h3>
+              <h3>🏢 Société &amp; Agrément VTC</h3>
               <ul>
-                <li><strong>Raison sociale :</strong> SASU Absig</li>
+                <li><strong>Exploitant :</strong> ABSIG CONSULTING (Baruch SIGLER)</li>
                 <li><strong>Marque commerciale :</strong> Galriviera</li>
-                <li><strong>Siège social :</strong> 120 route de macarons, 06560 Valbonne</li>
+                <li><strong>Registre VTC :</strong> EVTC006230586 (valable jusqu'au 11/09/2028)</li>
+                <li><strong>Siège social :</strong> 120 route des Macarons, 06560 Valbonne</li>
                 <li><strong>N° TVA :</strong> FR52914022736</li>
-                <li><strong>Création :</strong> 7 avril 2022</li>
               </ul>
             </div>
             <div class="legal-card">

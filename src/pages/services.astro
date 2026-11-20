@@ -7,11 +7,13 @@ import BookingWidget from '../components/BookingWidget.astro';
   title="Nos Services VTC Premium | Galriviera - Chauffeur Privé Côte d'Azur"
   description="Découvrez tous nos services VTC haut de gamme : transferts aéroport, circuits touristiques, mariages, événements business. Réservation 24/7."
   currentLang="fr"
+
+  alternateLinks={{ fr: "services", en: "nice-airport-transfer-private-driver" }}
 >
   <section class="hero-banner" style="min-height: 50vh;">
     <div class="hero-image-container">
       <div class="hero-overlay"></div>
-      <img src="/assets/img/hero/chauffeur-service.webp" alt="Services VTC Premium Galriviera" class="hero-background-image"/>
+      <img src="/assets/img/gallery/service-airport-transfer.webp" alt="Services VTC Premium Galriviera" class="hero-background-image"/>
     </div>
     <div class="hero-content" data-aos="fade-up">
       <h1 class="hero-title">Nos Services VTC Premium</h1>
@@ -56,12 +58,12 @@ import BookingWidget from '../components/BookingWidget.astro';
         <!-- Service 3 -->
         <article class="service-card">
           <div class="service-image">
-            <img src="/assets/img/hero/synagogue-nice.jpg" alt="Services Israéliens" loading="lazy"/>
+            <img src="/assets/img/gallery/fleet-van-interior.webp" alt="Van 7 places et transferts famille sur la Côte d'Azur" loading="lazy"/>
           </div>
           <div class="service-content">
-            <h3>✡️ Services Voyageurs Israéliens</h3>
-            <p>Chauffeurs parlant hébreu, restaurants casher, respect du Shabbat, tours mémoriels. Service adapté à vos traditions.</p>
-            <a href="/chauffeur-prive-parlant-hebreu-nice" class="service-link">En savoir plus →</a>
+            <h3>👨‍👩‍👧‍👦 Transferts Famille &amp; Groupes</h3>
+            <p>Van Mercedes Classe V 7 places, salon cuir, grand coffre bagages et sièges bébé ou rehausseurs fournis sur demande.</p>
+            <a href="/vtc-famille-siege-bebe" class="service-link">En savoir plus →</a>
           </div>
         </article>
 
@@ -80,7 +82,7 @@ import BookingWidget from '../components/BookingWidget.astro';
         <!-- Service 5 -->
         <article class="service-card">
           <div class="service-image">
-            <img src="/assets/img/gallery/galriviera-luxury-2.webp" alt="Mariages Côte d'Azur" loading="lazy"/>
+            <img src="/assets/img/gallery/fleet-sedan-riviera.webp" alt="Mariages Côte d'Azur" loading="lazy"/>
           </div>
           <div class="service-content">
             <h3>💒 Mariages & Événements</h3>
@@ -108,35 +110,35 @@ import BookingWidget from '../components/BookingWidget.astro';
   <section class="fleet-section">
     <div class="container">
       <h2 class="section-title">Notre Flotte Premium</h2>
-      <p class="section-subtitle">Tous nos véhicules ont moins de 2 ans et sont impeccablement entretenus.</p>
+      <p class="section-subtitle">Des véhicules récents, soigneusement entretenus et tout confort pour chacun de vos déplacements.</p>
       
       <div class="fleet-grid">
         <div class="fleet-card">
-          <img src="/assets/img/gallery/galriviera-luxury-1.webp" alt="Mercedes Classe S berline luxe noire - VTC Nice Côte d'Azur" loading="lazy"/>
+          <img src="/assets/img/gallery/fleet-van-luxe.webp" alt="Mercedes Classe V 220d noir 7 places - VTC Nice Côte d'Azur" loading="lazy"/>
           <div class="fleet-info">
-            <strong>Mercedes Classe S</strong>
-            <span>Berline luxe • 3 passagers</span>
+            <strong>Mercedes Classe V 220d</strong>
+            <span>Van luxe • Jusqu'à 7 passagers</span>
           </div>
         </div>
         <div class="fleet-card">
-          <img src="/assets/img/gallery/galriviera-luxury-2.webp" alt="Mercedes Classe E berline affaires - Chauffeur privé Nice" loading="lazy"/>
+          <img src="/assets/img/gallery/fleet-van-interior.webp" alt="Intérieur salon cuir noir Mercedes Classe V Galriviera" loading="lazy"/>
           <div class="fleet-info">
-            <strong>Mercedes Classe E</strong>
-            <span>Berline affaires • 3 passagers</span>
+            <strong>Salon Cuir Classe V</strong>
+            <span>Configuration face-à-face • Grand coffre</span>
           </div>
         </div>
         <div class="fleet-card">
-          <img src="/assets/img/gallery/galriviera-luxury-4.webp" alt="Mercedes Classe V van luxe 7 places - Transport groupe Nice" loading="lazy"/>
+          <img src="/assets/img/gallery/fleet-sedan-riviera.webp" alt="SUV Executive Peugeot 5008 GT noir - Chauffeur privé Nice" loading="lazy"/>
           <div class="fleet-info">
-            <strong>Mercedes Classe V</strong>
-            <span>Van luxe • 7 passagers</span>
+            <strong>Peugeot 5008 GT</strong>
+            <span>SUV Executive • Confort &amp; discrétion</span>
           </div>
         </div>
         <div class="fleet-card">
-          <img src="/assets/img/destinations/vtc-tesla-nice.webp" alt="Tesla Model S électrique premium - VTC écologique Nice" loading="lazy"/>
+          <img src="/assets/img/gallery/service-interior-comfort.webp" alt="Intérieur toit panoramique Peugeot 5008 GT - Galriviera" loading="lazy"/>
           <div class="fleet-info">
-            <strong>Tesla Model S</strong>
-            <span>100% électrique • Premium</span>
+            <strong>Toit Panoramique &amp; USB</strong>
+            <span>Cuir / Alcantara • Tablettes arrière</span>
           </div>
         </div>
       </div>

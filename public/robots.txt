@@ -3,17 +3,11 @@
 
 User-agent: *
 Allow: /
+Allow: /manifest.json
 
-# Sitemap
-Sitemap: https://www.galriviera.com/sitemap.xml
+# Sitemap généré par @astrojs/sitemap
+Sitemap: https://www.galriviera.com/sitemap-index.xml
 
 # Disallow admin et fichiers privés
 Disallow: /admin/
 Disallow: /api/
-Disallow: /*.json$
-Disallow: /_astro/
-
-# Crawl-delay pour éviter la surcharge
-Crawl-delay: 1
-
-

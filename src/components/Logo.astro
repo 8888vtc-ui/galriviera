@@ -1,32 +1,69 @@
 ---
-// Logo GALRIVIERA - Image officielle grande taille
+// Logo vectoriel GALRIVIERA — léger (< 1 Ko), net sur fond noir profond, sans <a> imbriqué
 ---
 
-<a href="/" class="logo-link" aria-label="GALRIVIERA - Accueil">
-  <img 
-    src="/assets/img/logo-galriviera.png" 
-    alt="GALRIVIERA - Luxury Travel" 
-    class="logo-img"
-  />
-</a>
+<span class="logo-luxe">
+  <span class="logo-icon" aria-hidden="true">
+    <svg viewBox="0 0 48 48" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="44" height="44" rx="10" fill="#0f1115" stroke="#c6a972" stroke-width="1.8"/>
+      <text x="24" y="32" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="25" font-weight="700" fill="#c6a972">G</text>
+    </svg>
+  </span>
+  <span class="logo-text">
+    <span class="logo-title">GALRIVIERA</span>
+    <span class="logo-subtitle">PRIVATE CHAUFFEUR</span>
+  </span>
+</span>
 
 <style>
-  .logo-link {
-    display: flex;
+  .logo-luxe {
+    display: inline-flex;
     align-items: center;
-    text-decoration: none;
+    gap: 0.65rem;
   }
-  
-  .logo-img {
-    height: 100px;
-    width: auto;
-    max-width: 280px;
+
+  .logo-icon svg {
+    display: block;
+    width: 42px;
+    height: 42px;
   }
-  
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .logo-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #faf8f4;
+    letter-spacing: 0.12em;
+    line-height: 1.1;
+  }
+
+  .logo-subtitle {
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.64rem;
+    color: #c6a972;
+    letter-spacing: 0.22em;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
   @media (max-width: 768px) {
-    .logo-img {
-      height: 55px;
-      max-width: 160px;
+    .logo-icon svg {
+      width: 34px;
+      height: 34px;
+    }
+
+    .logo-title {
+      font-size: 0.98rem;
+    }
+
+    .logo-subtitle {
+      font-size: 0.56rem;
     }
   }
 </style>

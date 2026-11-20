@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import BookingWidget from '../components/BookingWidget.astro';
 
 const title = "Excursion Grasse & Parfums | Galriviera VTC Premium Nice";
-const description = "Excursion Grasse & Parfums - Service chauffeur privé haut de gamme sur la Côte d'Azur. visite Grasse parfumerie, Fragonard Grasse VTC. Réservation 24/7, véhicules luxe, tarif transparent.";
+const description = "Excursion Grasse & Parfums. Chauffeur privé sur la Côte d'Azur (Nice, Cannes, Monaco). Devis personnalisé, véhicules confort et accueil sur mesure.";
 const alternateLinks = {"en":"grasse-perfume-tour","he":"grasse-perfume-tour-hebrew","fr":"vtc-grasse-parfums"};
 
 // FAQ Schema for SEO
@@ -16,7 +16,7 @@ const faqSchema = {
       "name": "Comment réserver un Excursion Grasse & Parfums ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Réservez en 30 secondes via WhatsApp (+33 6 82 26 73 42) ou notre formulaire en ligne. Confirmation immédiate garantie."
+        "text": "Demandez votre devis personnalisé via WhatsApp (+33 6 82 26 73 42) ou notre formulaire en ligne. Réponse rapide et confirmation de disponibilité par notre équipe."
       }
     },
     {
@@ -32,19 +32,19 @@ const faqSchema = {
       "name": "Quels véhicules proposez-vous ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Flotte premium : Mercedes Classe S, Classe E, Classe V (7 places), et Tesla Model S. Tous nos véhicules ont moins de 2 ans."
+        "text": "Berlines haut de gamme et vans spacieux (jusqu'à 7 places), attribués selon vos besoins et disponibilités. Véhicules récents, soigneusement entretenus et tout confort."
       }
     }
   ]
 };
 ---
 
-<BaseLayout title={title} description={description} currentLang="fr" alternateLinks={alternateLinks}>
+<BaseLayout title={title} description={description} currentLang="fr" alternateLinks={alternateLinks} schema={faqSchema}>
   <!-- Hero Section -->
   <section class="hero-banner" style="min-height: 65vh;">
     <div class="hero-image-container">
       <div class="hero-overlay"></div>
-      <img src="/assets/img/hero/hero-riviera.webp" alt="Excursion Grasse & Parfums" class="hero-background-image" loading="eager" onerror="this.src='https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1920&auto=format&fit=crop'"/>
+      <img src="/assets/img/hero/hero-home-riviera.webp" alt="Excursion Grasse & Parfums" class="hero-background-image" loading="eager"/>
     </div>
     <div class="hero-content" data-aos="fade-up">
       <span class="text-gold text-sm uppercase tracking-wider mb-2 block">VTC Premium Côte d'Azur</span>
@@ -71,12 +71,12 @@ const faqSchema = {
   <nav class="container mx-auto px-4 py-4 text-sm" aria-label="Breadcrumb">
     <ol class="flex items-center space-x-2 text-gray-500" itemscope itemtype="https://schema.org/BreadcrumbList">
       <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a href="/" itemprop="item" class="hover:text-gold"><span itemprop="name">Accueil</span></a>
+        <a href="/" itemprop="item" class="hover:text-gold"><span>Accueil</span></a>
         <meta itemprop="position" content="1" />
       </li>
       <li class="mx-2">/</li>
       <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <span itemprop="name" class="text-blue-900 font-medium">Excursion Grasse & Parfums</span>
+        <span class="text-blue-900 font-medium">Excursion Grasse & Parfums</span>
         <meta itemprop="position" content="2" />
       </li>
     </ol>
@@ -215,29 +215,29 @@ const faqSchema = {
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center text-blue-900 mb-12">❓ Questions Fréquentes</h2>
-      <div class="max-w-3xl mx-auto space-y-4" itemscope itemtype="https://schema.org/FAQPage">
-        <div class="bg-white p-6 rounded-lg shadow-sm" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 class="font-bold text-lg mb-2" itemprop="name">Comment réserver mon Excursion Grasse & Parfums ?</h3>
-          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p class="text-gray-600" itemprop="text">Réservez en 30 secondes via WhatsApp (+33 6 82 26 73 42) ou notre formulaire en ligne. Confirmation immédiate garantie. Nous recommandons de réserver au moins 24h à l'avance pour garantir la disponibilité.</p>
+      <div class="max-w-3xl mx-auto space-y-4">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="font-bold text-lg mb-2">Comment réserver mon Excursion Grasse & Parfums ?</h3>
+          <div>
+            <p class="text-gray-600">Demandez votre devis personnalisé via WhatsApp (+33 6 82 26 73 42) ou notre formulaire en ligne. Réponse rapide et confirmation de disponibilité par notre équipe. Nous recommandons de réserver au moins 24h à l'avance pour garantir la disponibilité.</p>
           </div>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 class="font-bold text-lg mb-2" itemprop="name">Les chauffeurs parlent-ils anglais ou hébreu ?</h3>
-          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p class="text-gray-600" itemprop="text">Oui, tous nos chauffeurs parlent couramment français et anglais. Nous disposons également de chauffeurs parlant hébreu pour nos clients israéliens, sur demande lors de la réservation.</p>
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="font-bold text-lg mb-2">Les chauffeurs parlent-ils anglais ou hébreu ?</h3>
+          <div>
+            <p class="text-gray-600">Oui, tous nos chauffeurs parlent couramment français et anglais. Nous disposons également de chauffeurs parlant hébreu pour nos clients israéliens, sur demande lors de la réservation.</p>
           </div>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 class="font-bold text-lg mb-2" itemprop="name">Quels sont vos tarifs ?</h3>
-          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p class="text-gray-600" itemprop="text">Demi-journée à partir de 250€. Nos tarifs sont fixes et transparents, sans frais cachés ni supplément pour les bagages. Demandez votre devis gratuit et personnalisé en quelques secondes.</p>
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="font-bold text-lg mb-2">Quels sont vos tarifs ?</h3>
+          <div>
+            <p class="text-gray-600">Demi-journée à partir de 250€. Nos tarifs sont fixes et transparents, sans frais cachés ni supplément pour les bagages. Demandez votre devis gratuit et personnalisé en quelques secondes.</p>
           </div>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-sm" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 class="font-bold text-lg mb-2" itemprop="name">Proposez-vous des sièges bébé ?</h3>
-          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p class="text-gray-600" itemprop="text">Absolument ! Nous fournissons gratuitement des sièges auto adaptés à l'âge de votre enfant (nacelle, siège coque, rehausseur). Précisez-le simplement lors de votre réservation.</p>
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="font-bold text-lg mb-2">Proposez-vous des sièges bébé ?</h3>
+          <div>
+            <p class="text-gray-600">Des sièges auto adaptés à l'âge de votre enfant peuvent être prévus sur demande selon disponibilité. Précisez-le lors de votre demande de devis.</p>
           </div>
         </div>
       </div>
@@ -258,7 +258,7 @@ const faqSchema = {
         </div>
         <div class="flex items-center gap-2">
           <span class="text-gold text-xl">🚗</span>
-          <span>Véhicules <strong>-2 ans</strong></span>
+          <span>Véhicules <strong>récents &amp; entretenus</strong></span>
         </div>
         <div class="flex items-center gap-2">
           <span class="text-gold text-xl">⏰</span>

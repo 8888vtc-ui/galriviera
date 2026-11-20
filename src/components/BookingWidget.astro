@@ -3,66 +3,123 @@ interface Props {
   currentLang?: string;
 }
 
-const { currentLang = 'en' } = Astro.props;
+const { currentLang = 'fr' } = Astro.props;
 
 const t = {
-  en: {
-    title: "Instant Quote & Booking",
-    pickup: "Pick-up Location",
-    dropoff: "Drop-off Location",
-    date: "Date",
-    time: "Time",
-    vehicle: "Vehicle Type",
-    passengers: "Passengers",
-    bookBtn: "Get Price on WhatsApp",
-    locations: {
-      nice_airport: "Nice Airport (NCE)",
-      nice_city: "Nice City Center",
-      cannes: "Cannes",
-      monaco: "Monaco / Monte-Carlo",
-      antibes: "Antibes / Juan-les-Pins",
-      st_tropez: "Saint-Tropez",
-      other: "Other (Specify in msg)"
-    },
-    vehicles: {
-      sedan: "Luxury Sedan (Mercedes E-Class)",
-      van: "Luxury Van (Mercedes V-Class)",
-      limo: "First Class (Mercedes S-Class)"
-    }
-  },
   fr: {
-    title: "Devis & Réservation Express",
-    pickup: "Lieu de prise en charge",
+    title: "Demande de devis personnalisé",
+    subtitle: "Indiquez les détails de votre trajet. Notre équipe vérifie la disponibilité et vous répond rapidement avec un tarif clair.",
+    pickup: "Lieu de départ",
     dropoff: "Destination",
     date: "Date",
     time: "Heure",
-    vehicle: "Type de véhicule",
     passengers: "Passagers",
-    bookBtn: "Voir le prix sur WhatsApp",
+    luggage: "Bagages",
+    vehicle: "Catégorie de véhicule",
+    flight: "Numéro de vol (si transfert aéroport)",
+    flightPlaceholder: "Ex. AF7702 (optionnel)",
+    childSeat: "Sièges enfants (sur demande)",
+    name: "Votre nom",
+    namePlaceholder: "Nom et prénom",
+    contact: "Téléphone ou Email",
+    contactPlaceholder: "+33 6 ... ou email@domaine.com",
+    notes: "Demande particulière (adresse précise, terminal, arrêt, langue...)",
+    notesPlaceholder: "Précisez votre terminal, hôtel, besoin spécifique...",
+    bookBtn: "Recevoir mon devis personnalisé",
+    directWa: "Ou contacter GALRIVIERA directement sur WhatsApp",
+    disclaimer: "Devis gratuit sans engagement. Les options (sièges enfants, accueil terminal, mise à disposition) sont confirmées selon disponibilité.",
+    validationError: "Veuillez renseigner les champs obligatoires (départ, destination, date, heure, nom et coordonnées).",
+    sentConfirm: "Votre demande structurée est prête dans WhatsApp. Notre équipe vous répondra dans les meilleurs délais.",
     locations: {
-      nice_airport: "Aéroport de Nice (NCE)",
+      nice_airport: "Aéroport de Nice Côte d'Azur (NCE)",
       nice_city: "Nice Centre",
       cannes: "Cannes",
       monaco: "Monaco / Monte-Carlo",
       antibes: "Antibes / Juan-les-Pins",
       st_tropez: "Saint-Tropez",
-      other: "Autre (Préciser)"
+      other: "Autre destination (préciser ci-dessous)"
     },
     vehicles: {
-      sedan: "Berline Luxe (Mercedes Classe E)",
-      van: "Van Luxe (Mercedes Classe V)",
-      limo: "Première Classe (Mercedes Classe S)"
+      van: "Van Luxe — Mercedes Classe V 220d (jusqu'à 7 passagers)",
+      sedan: "SUV Executive — Peugeot 5008 GT (jusqu'à 4 passagers)",
+      limo: "Berline Prestige (sur demande)"
+    },
+    seats: {
+      none: "Aucun",
+      baby: "Siège bébé (sur demande)",
+      booster: "Rehausseur enfant (sur demande)",
+      multiple: "Plusieurs sièges (préciser en remarque)"
+    }
+  },
+  en: {
+    title: "Request a Personalized Quote",
+    subtitle: "Share your trip details. Our team checks availability and replies promptly with a clear, tailored quote.",
+    pickup: "Pick-up Location",
+    dropoff: "Drop-off Location",
+    date: "Date",
+    time: "Time",
+    passengers: "Passengers",
+    luggage: "Luggage",
+    vehicle: "Vehicle Category",
+    flight: "Flight Number (if airport transfer)",
+    flightPlaceholder: "e.g. BA342 (optional)",
+    childSeat: "Child Seats (upon request)",
+    name: "Your Name",
+    namePlaceholder: "Full name",
+    contact: "Phone or Email",
+    contactPlaceholder: "+33 6 ... or email@domain.com",
+    notes: "Special requests (exact address, terminal, extra stop, language...)",
+    notesPlaceholder: "Terminal, hotel name, special requirements...",
+    bookBtn: "Get My Personalized Quote",
+    directWa: "Or contact GALRIVIERA directly on WhatsApp",
+    disclaimer: "Free, no-obligation quote. Special options (child seats, terminal meet & greet) are confirmed subject to availability.",
+    validationError: "Please fill in all required fields (pick-up, drop-off, date, time, name and contact details).",
+    sentConfirm: "Your structured quote request has been prepared in WhatsApp. Our team will get back to you shortly.",
+    locations: {
+      nice_airport: "Nice Côte d'Azur Airport (NCE)",
+      nice_city: "Nice City Center",
+      cannes: "Cannes",
+      monaco: "Monaco / Monte-Carlo",
+      antibes: "Antibes / Juan-les-Pins",
+      st_tropez: "Saint-Tropez",
+      other: "Other (specify in notes)"
+    },
+    vehicles: {
+      van: "Luxury Van — Mercedes V-Class 220d (up to 7 passengers)",
+      sedan: "Executive SUV — Peugeot 5008 GT (up to 4 passengers)",
+      limo: "Prestige Sedan (upon request)"
+    },
+    seats: {
+      none: "None",
+      baby: "Baby seat (upon request)",
+      booster: "Booster seat (upon request)",
+      multiple: "Multiple seats (specify in notes)"
     }
   },
   he: {
-    title: "הצעת מחיר והזמנה מיידית",
-    pickup: "מקום איסוף",
+    title: "בקשת הצעת מחיר מותאמת אישית",
+    subtitle: "מלאו את פרטי הנסיעה. הצוות שלנו יבדוק זמינות ויחזור אליכם במהירות עם הצעת מחיר ברורה.",
+    pickup: "נקודת איסוף",
     dropoff: "יעד",
     date: "תאריך",
     time: "שעה",
-    vehicle: "סוג רכב",
     passengers: "נוסעים",
-    bookBtn: "קבל מחיר ב-WhatsApp",
+    luggage: "מזוודות",
+    vehicle: "קטגוריית רכב",
+    flight: "מספר טיסה (להסעות משדה התעופה)",
+    flightPlaceholder: "לדוגמה LY323 (אופציונלי)",
+    childSeat: "כיסאות בטיחות (לפי בקשה)",
+    name: "שם מלא",
+    namePlaceholder: "שם פרטי ומשפחה",
+    contact: "טלפון או אימייל",
+    contactPlaceholder: "+972 ... או email@domain.com",
+    notes: "בקשה מיוחדת (כתובת מדויקת, טרמינל, שפה...)",
+    notesPlaceholder: "ציינו טרמינל, שם מלון או בקשה מיוחדת...",
+    bookBtn: "קבל הצעת מחיר מותאמת אישית",
+    directWa: "או צרו קשר ישירות עם GALRIVIERA בוואטסאפ",
+    disclaimer: "הצעת מחיר ללא התחייבות. תוספות (כיסאות ילדים, קבלת פנים בטרמינל) מאושרות בהתאם לזמינות.",
+    validationError: "אנא מלאו את כל שדות החובה (איסוף, יעד, תאריך, שעה, שם ופרטי קשר).",
+    sentConfirm: "בקשתכם המפורטת הוכנה בוואטסאפ. הצוות שלנו יחזור אליכם בהקדם.",
     locations: {
       nice_airport: "שדה התעופה ניס (NCE)",
       nice_city: "מרכז העיר ניס",
@@ -70,76 +127,82 @@ const t = {
       monaco: "מונקו / מונטה קרלו",
       antibes: "אנטיב / ז'ואן-לה-פן",
       st_tropez: "סן טרופה",
-      other: "אחר (ציין בהודעה)"
+      other: "אחר (ציינו בהערות)"
     },
     vehicles: {
-      sedan: "סדאן יוקרתי (מרצדס E-Class)",
-      van: "ואן יוקרתי (מרצדס V-Class)",
-      limo: "מחלקה ראשונה (מרצדס S-Class)"
+      sedan: "סדאן עסקים (עד 3 נוסעים)",
+      van: "ואן יוקרתי (עד 7 נוסעים)",
+      limo: "סדאן פרימיום (עד 3 נוסעים)"
+    },
+    seats: {
+      none: "ללא",
+      baby: "כיסא תינוק (לפי בקשה)",
+      booster: "בוסטר לילד (לפי בקשה)",
+      multiple: "מספר כיסאות (ציינו בהערות)"
     }
   }
 };
 
-const lang = t[currentLang] || t.en;
+const lang = t[currentLang] || t.fr;
 const isRtl = currentLang === 'he';
 ---
 
-<div class="booking-widget" data-aos="fade-up" dir={isRtl ? 'rtl' : 'ltr'}>
+<div
+  id="booking-widget"
+  class="booking-widget"
+  dir={isRtl ? 'rtl' : 'ltr'}
+  data-lang={currentLang}
+  data-error={lang.validationError}
+  data-confirm={lang.sentConfirm}
+>
   <div class="booking-header">
     <h3>{lang.title}</h3>
+    <p class="booking-subtitle">{lang.subtitle}</p>
   </div>
-  <form id="booking-form" class="booking-form">
+
+  <form id="booking-form" class="booking-form" novalidate>
     <div class="form-grid">
       <div class="form-group">
-        <label for="pickup">{lang.pickup}</label>
-        <select id="pickup" required>
-          <option value="Nice Airport (NCE)">{lang.locations.nice_airport}</option>
-          <option value="Nice City">{lang.locations.nice_city}</option>
+        <label for="pickup">{lang.pickup} *</label>
+        <select id="pickup" name="pickup" required>
+          <option value="Aéroport de Nice (NCE)">{lang.locations.nice_airport}</option>
+          <option value="Nice Centre">{lang.locations.nice_city}</option>
           <option value="Cannes">{lang.locations.cannes}</option>
-          <option value="Monaco">{lang.locations.monaco}</option>
-          <option value="Antibes">{lang.locations.antibes}</option>
+          <option value="Monaco / Monte-Carlo">{lang.locations.monaco}</option>
+          <option value="Antibes / Juan-les-Pins">{lang.locations.antibes}</option>
           <option value="Saint-Tropez">{lang.locations.st_tropez}</option>
-          <option value="Other">{lang.locations.other}</option>
+          <option value="Autre">{lang.locations.other}</option>
         </select>
       </div>
-      
+
       <div class="form-group">
-        <label for="dropoff">{lang.dropoff}</label>
-        <select id="dropoff" required>
+        <label for="dropoff">{lang.dropoff} *</label>
+        <select id="dropoff" name="dropoff" required>
+          <option value="Monaco / Monte-Carlo">{lang.locations.monaco}</option>
           <option value="Cannes">{lang.locations.cannes}</option>
-          <option value="Nice Airport (NCE)">{lang.locations.nice_airport}</option>
-          <option value="Nice City">{lang.locations.nice_city}</option>
-          <option value="Monaco">{lang.locations.monaco}</option>
-          <option value="Antibes">{lang.locations.antibes}</option>
+          <option value="Aéroport de Nice (NCE)">{lang.locations.nice_airport}</option>
+          <option value="Nice Centre">{lang.locations.nice_city}</option>
+          <option value="Antibes / Juan-les-Pins">{lang.locations.antibes}</option>
           <option value="Saint-Tropez">{lang.locations.st_tropez}</option>
-          <option value="Other">{lang.locations.other}</option>
+          <option value="Autre">{lang.locations.other}</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label for="date">{lang.date}</label>
-        <input type="date" id="date" required />
+        <label for="date">{lang.date} *</label>
+        <input type="date" id="date" name="date" required />
       </div>
 
       <div class="form-group">
-        <label for="time">{lang.time}</label>
-        <input type="time" id="time" required />
+        <label for="time">{lang.time} *</label>
+        <input type="time" id="time" name="time" required />
       </div>
 
       <div class="form-group">
-        <label for="vehicle">{lang.vehicle}</label>
-        <select id="vehicle">
-          <option value="Sedan">{lang.vehicles.sedan}</option>
-          <option value="Van">{lang.vehicles.van}</option>
-          <option value="S-Class">{lang.vehicles.limo}</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="passengers">{lang.passengers}</label>
-        <select id="passengers">
+        <label for="passengers">{lang.passengers} *</label>
+        <select id="passengers" name="passengers" required>
           <option value="1">1</option>
-          <option value="2">2</option>
+          <option value="2" selected>2</option>
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
@@ -148,135 +211,377 @@ const isRtl = currentLang === 'he';
           <option value="8+">8+</option>
         </select>
       </div>
+
+      <div class="form-group">
+        <label for="luggage">{lang.luggage}</label>
+        <select id="luggage" name="luggage">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6+">6+</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="vehicle">{lang.vehicle}</label>
+        <select id="vehicle" name="vehicle">
+          <option value={lang.vehicles.sedan}>{lang.vehicles.sedan}</option>
+          <option value={lang.vehicles.van}>{lang.vehicles.van}</option>
+          <option value={lang.vehicles.limo}>{lang.vehicles.limo}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="flight">{lang.flight}</label>
+        <input type="text" id="flight" name="flight" placeholder={lang.flightPlaceholder} autocomplete="off" />
+      </div>
+
+      <div class="form-group">
+        <label for="child-seat">{lang.childSeat}</label>
+        <select id="child-seat" name="childSeat">
+          <option value={lang.seats.none}>{lang.seats.none}</option>
+          <option value={lang.seats.baby}>{lang.seats.baby}</option>
+          <option value={lang.seats.booster}>{lang.seats.booster}</option>
+          <option value={lang.seats.multiple}>{lang.seats.multiple}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="client-name">{lang.name} *</label>
+        <input type="text" id="client-name" name="clientName" placeholder={lang.namePlaceholder} required autocomplete="name" />
+      </div>
+
+      <div class="form-group form-group-wide">
+        <label for="client-contact">{lang.contact} *</label>
+        <input type="text" id="client-contact" name="clientContact" placeholder={lang.contactPlaceholder} required autocomplete="tel" />
+      </div>
+
+      <div class="form-group form-group-full">
+        <label for="notes">{lang.notes}</label>
+        <textarea id="notes" name="notes" rows="2" placeholder={lang.notesPlaceholder}></textarea>
+      </div>
     </div>
-    
+
+    <div id="booking-feedback" class="booking-feedback" role="status" aria-live="polite"></div>
+
     <button type="submit" class="submit-btn">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-      {lang.bookBtn}
+      <span>{lang.bookBtn}</span>
     </button>
+
+    <div class="booking-footer-meta">
+      <p class="booking-disclaimer">{lang.disclaimer}</p>
+      <a href="https://wa.me/33682267342" target="_blank" rel="noopener noreferrer" class="direct-wa-link">
+        {lang.directWa} →
+      </a>
+    </div>
   </form>
 </div>
 
 <style>
   .booking-widget {
     background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    padding: 2rem;
-    max-width: 1000px;
-    margin: -80px auto 0; /* Overlap hero */
+    border-radius: 10px;
+    box-shadow: 0 18px 40px rgba(15, 17, 21, 0.1);
+    padding: 2.25rem;
+    max-width: 1040px;
+    margin: -56px auto 2rem;
     position: relative;
     z-index: 20;
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(198, 169, 114, 0.35);
+  }
+
+  .booking-header {
+    text-align: center;
+    margin-bottom: 1.75rem;
   }
 
   .booking-header h3 {
-    color: #002366;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 700;
+    color: #0f1115;
+    margin-bottom: 0.4rem;
+    font-size: 1.65rem;
+    font-weight: 600;
+  }
+
+  .booking-subtitle {
+    color: #555963;
+    font-size: 0.95rem;
+    max-width: 660px;
+    margin: 0 auto;
+    line-height: 1.5;
   }
 
   .form-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.15rem;
+    margin-bottom: 1.5rem;
   }
 
   .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem;
+  }
+
+  .form-group-wide {
+    grid-column: span 2;
+  }
+
+  .form-group-full {
+    grid-column: 1 / -1;
   }
 
   label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    color: #4a5568;
+    color: #272a32;
   }
 
-  select, input {
-    padding: 0.75rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    font-size: 1rem;
-    background-color: #f8fafc;
-    transition: all 0.3s;
+  select, input, textarea {
+    padding: 0.72rem 0.85rem;
+    border: 1px solid #dcd9d0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: #16181d;
+    background-color: #faf8f4;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
   }
 
-  select:focus, input:focus {
+  select:focus, input:focus, textarea:focus {
     outline: none;
-    border-color: #d4af37;
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    border-color: #c6a972;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(198, 169, 114, 0.18);
+  }
+
+  .input-invalid {
+    border-color: #c53030 !important;
+    background-color: #fff5f5 !important;
+  }
+
+  .booking-feedback {
+    display: none;
+    padding: 0.85rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+
+  .booking-feedback.error {
+    display: block;
+    background: #fff5f5;
+    color: #9b2c2c;
+    border: 1px solid #feb2b2;
+  }
+
+  .booking-feedback.success {
+    display: block;
+    background: #f0f9f4;
+    color: #1e5631;
+    border: 1px solid #b7e4c7;
   }
 
   .submit-btn {
     width: 100%;
-    background: #25D366;
-    color: white;
-    padding: 1rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 700;
+    background: #0f1115;
+    color: #faf8f4;
+    padding: 1rem 1.5rem;
+    border: 1px solid #c6a972;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    transition: all 0.3s;
+    transition: background-color 0.25s, color 0.25s, transform 0.2s;
   }
 
   .submit-btn:hover {
-    background: #128c7e;
-    transform: translateY(-2px);
+    background: #c6a972;
+    color: #0f1115;
+    transform: translateY(-1px);
   }
 
-  @media (max-width: 768px) {
-    .booking-widget {
-      margin: 1.5rem 1rem 2rem;
-      padding: 1.25rem;
-      border-radius: 10px;
-    }
-    
-    .booking-header h3 {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-    }
-    
+  .booking-footer-meta {
+    margin-top: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    align-items: center;
+  }
+
+  .booking-disclaimer {
+    font-size: 0.82rem;
+    color: #6b707c;
+    margin: 0;
+  }
+
+  .direct-wa-link {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #1f7a43;
+  }
+
+  .direct-wa-link:hover {
+    color: #145a2f;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px) {
     .form-grid {
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    
-    select, input {
-      padding: 0.875rem;
-      font-size: 16px; /* Prevents iOS zoom */
+    .form-group-wide {
+      grid-column: span 2;
     }
-    
-    .submit-btn {
-      padding: 0.875rem;
-      font-size: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .booking-widget {
+      margin: 1rem 0.75rem 2rem;
+      padding: 1.25rem;
+    }
+
+    .booking-header h3 {
+      font-size: 1.35rem;
+    }
+
+    .form-grid {
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
+
+    .form-group-wide {
+      grid-column: span 1;
+    }
+
+    select, input, textarea {
+      padding: 0.8rem;
+      font-size: 16px;
     }
   }
 </style>
 
 <script is:inline>
-  document.getElementById('booking-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const pickup = document.getElementById('pickup').value;
-    const dropoff = document.getElementById('dropoff').value;
-    const date = document.getElementById('date').value;
-    const time = document.getElementById('time').value;
-    const vehicle = document.getElementById('vehicle').value;
-    const passengers = document.getElementById('passengers').value;
+  (function() {
+    const widget = document.getElementById('booking-widget');
+    const form = document.getElementById('booking-form');
+    if (!widget || !form) return;
 
-    const message = `Bonjour Galriviera, I would like a quote for:\n\n🚗 *Route*: ${pickup} ➡️ ${dropoff}\n📅 *Date*: ${date} at ${time}\n🚙 *Vehicle*: ${vehicle}\n👥 *Passengers*: ${passengers}\n\nThank you!`;
-    
-    const whatsappUrl = `https://wa.me/33682267342?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  });
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.setAttribute('min', today);
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const feedback = document.getElementById('booking-feedback');
+      const requiredIds = ['pickup', 'dropoff', 'date', 'time', 'client-name', 'client-contact'];
+      let isValid = true;
+
+      requiredIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (!el.value || !el.value.trim()) {
+          el.classList.add('input-invalid');
+          isValid = false;
+        } else {
+          el.classList.remove('input-invalid');
+        }
+      });
+
+      if (!isValid) {
+        if (feedback) {
+          feedback.textContent = widget.dataset.error || 'Veuillez compléter les champs obligatoires.';
+          feedback.className = 'booking-feedback error';
+        }
+        return;
+      }
+
+      const lang = widget.dataset.lang || 'fr';
+      const pickup = document.getElementById('pickup').value;
+      const dropoff = document.getElementById('dropoff').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+      const passengers = document.getElementById('passengers').value;
+      const luggage = document.getElementById('luggage').value;
+      const vehicle = document.getElementById('vehicle').value;
+      const flight = (document.getElementById('flight').value || '').trim();
+      const childSeat = document.getElementById('child-seat').value;
+      const clientName = document.getElementById('client-name').value.trim();
+      const clientContact = document.getElementById('client-contact').value.trim();
+      const notes = (document.getElementById('notes').value || '').trim();
+
+      let lines = [];
+      if (lang === 'en') {
+        lines = [
+          'Hello GALRIVIERA, I would like a personalized quote:',
+          `• Route: ${pickup} -> ${dropoff}`,
+          `• Date & Time: ${date} at ${time}`,
+          `• Passengers: ${passengers} | Luggage: ${luggage}`,
+          `• Vehicle: ${vehicle}`,
+          flight ? `• Flight Number: ${flight}` : null,
+          `• Child Seats: ${childSeat}`,
+          `• Name: ${clientName}`,
+          `• Contact: ${clientContact}`,
+          notes ? `• Notes: ${notes}` : null
+        ].filter(Boolean);
+      } else if (lang === 'he') {
+        lines = [
+          'שלום GALRIVIERA, אשמח לקבל הצעת מחיר מותאמת אישית:',
+          `• מסלול: ${pickup} -> ${dropoff}`,
+          `• תאריך ושעה: ${date} בשעה ${time}`,
+          `• נוסעים: ${passengers} | מזוודות: ${luggage}`,
+          `• רכב: ${vehicle}`,
+          flight ? `• מספר טיסה: ${flight}` : null,
+          `• כיסאות ילדים: ${childSeat}`,
+          `• שם: ${clientName}`,
+          `• פרטי קשר: ${clientContact}`,
+          notes ? `• הערות: ${notes}` : null
+        ].filter(Boolean);
+      } else {
+        lines = [
+          'Bonjour GALRIVIERA, je souhaite recevoir un devis personnalisé :',
+          `• Trajet : ${pickup} -> ${dropoff}`,
+          `• Date & Heure : ${date} à ${time}`,
+          `• Passagers : ${passengers} | Bagages : ${luggage}`,
+          `• Véhicule : ${vehicle}`,
+          flight ? `• Numéro de vol : ${flight}` : null,
+          `• Sièges enfants : ${childSeat}`,
+          `• Nom : ${clientName}`,
+          `• Coordonnées : ${clientContact}`,
+          notes ? `• Demande particulière : ${notes}` : null
+        ].filter(Boolean);
+      }
+
+      if (typeof window.galrivieraTrack === 'function') {
+        window.galrivieraTrack('quote_request_submit', {
+          pickup: pickup,
+          dropoff: dropoff,
+          vehicle: vehicle,
+          passengers: passengers,
+          language: lang
+        });
+      }
+
+      if (feedback) {
+        feedback.textContent = widget.dataset.confirm || '';
+        feedback.className = 'booking-feedback success';
+      }
+
+      const whatsappUrl = `https://wa.me/33682267342?text=${encodeURIComponent(lines.join('\n'))}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
+  })();
 </script>

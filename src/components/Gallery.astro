@@ -1,125 +1,288 @@
 ---
-const images = [
-  '/assets/img/gallery/galriviera-luxury-1.webp',
-  '/assets/img/gallery/galriviera-luxury-2.webp',
-  '/assets/img/gallery/galriviera-luxury-3.webp',
-  '/assets/img/gallery/galriviera-luxury-4.webp',
-  '/assets/img/gallery/galriviera-luxury-5.webp',
-  '/assets/img/gallery/galriviera-luxury-6.webp',
-  '/assets/img/gallery/galriviera-luxury-7.webp',
-  '/assets/img/gallery/galriviera-luxury-8.webp',
-  '/assets/img/gallery/galriviera-luxury-9.webp',
-  '/assets/img/gallery/galriviera-luxury-10.webp',
-  '/assets/img/gallery/galriviera-luxury-11.webp',
-  '/assets/img/gallery/galriviera-luxury-12.webp',
-];
-
-const imageAlts = [
-  'Mercedes Classe S - Transfert VTC Nice',
-  'Chauffeur privé Monaco',
-  'VTC Cannes Festival',
-  'Transport luxe Côte d\'Azur',
-  'Service VIP aéroport Nice',
-  'Excursion Saint-Tropez',
-  'Mercedes Classe V famille',
-  'Tour privé Eze Village',
-  'VTC business Sophia Antipolis',
-  'Transport mariage Riviera',
-  'Chauffeur hébreu Nice',
-  'Service premium sur mesure',
+const gallerySections = [
+  {
+    id: 'flotte',
+    label: 'Notre Flotte',
+    items: [
+      {
+        src: '/assets/img/gallery/fleet-van-luxe.webp',
+        alt: 'Van Mercedes Classe V 220d noir GALRIVIERA jusqu’à 7 passagers sur la Côte d’Azur',
+        caption: 'Mercedes Classe V 220d (7 places)'
+      },
+      {
+        src: '/assets/img/gallery/fleet-van-interior.webp',
+        alt: 'Intérieur salon cuir noir face-à-face du Mercedes Classe V GALRIVIERA',
+        caption: 'Salon Cuir — Mercedes Classe V'
+      },
+      {
+        src: '/assets/img/gallery/fleet-sedan-riviera.webp',
+        alt: 'SUV Executive Peugeot 5008 GT noir GALRIVIERA sur la Côte d’Azur',
+        caption: 'SUV Executive — Peugeot 5008 GT'
+      },
+      {
+        src: '/assets/img/gallery/service-interior-comfort.webp',
+        alt: 'Intérieur cuir et alcantara avec toit panoramique et tablettes arrière du Peugeot 5008 GT',
+        caption: 'Confort & Toit Panoramique'
+      }
+    ]
+  },
+  {
+    id: 'prestations',
+    label: 'Prestations',
+    items: [
+      {
+        src: '/assets/img/gallery/service-airport-transfer.webp',
+        alt: 'Chauffeur privé en costume ouvrant la portière devant le terminal aéroport',
+        caption: 'Accueil Chauffeur & Aéroport'
+      },
+      {
+        src: '/assets/img/destinations/cannes-palais-festivals.webp',
+        alt: 'Transferts business et congrès au Palais des Festivals de Cannes',
+        caption: 'Business & Congrès Cannes'
+      },
+      {
+        src: '/assets/img/destinations/monaco-casino.webp',
+        alt: 'Soirées privées, Casino de Monte-Carlo et événements à Monaco',
+        caption: 'Soirées & Événements VIP'
+      },
+      {
+        src: '/assets/img/destinations/villefranche-riviera.webp',
+        alt: 'Excursion privée et mise à disposition sur la rade de Villefranche-sur-Mer',
+        caption: 'Excursions & Croisières'
+      }
+    ]
+  },
+  {
+    id: 'destinations',
+    label: 'Destinations',
+    items: [
+      {
+        src: '/assets/img/destinations/destination-monaco.webp',
+        alt: 'Transfert et excursion privée vers Monaco et Monte-Carlo',
+        caption: 'Monaco & Monte-Carlo'
+      },
+      {
+        src: '/assets/img/destinations/destination-eze.webp',
+        alt: 'Vue panoramique du village perché d’Èze surplombant la Méditerranée',
+        caption: 'Èze Village & Corniches'
+      },
+      {
+        src: '/assets/img/destinations/destination-cannes.webp',
+        alt: 'Transfert VTC vers Cannes et la Croisette',
+        caption: 'Cannes & La Croisette'
+      },
+      {
+        src: '/assets/img/destinations/destination-saint-tropez.webp',
+        alt: 'Trajet privé haut de gamme vers Saint-Tropez et le Golfe',
+        caption: 'Saint-Tropez'
+      }
+    ]
+  }
 ];
 ---
 
-<section class="py-16 bg-white" id="gallery">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center text-blue-900 mb-12 font-heading">
-      <slot name="title">Notre Flotte & Nos Expériences</slot>
-    </h2>
-    
-    <div class="gallery-grid">
-      {images.map((img, index) => (
-        <div class="gallery-item group">
-          <img 
-            src={img} 
-            alt={imageAlts[index] || `Galriviera Experience ${index + 1}`}
-            width="400"
-            height="225"
-            decoding="async"
-            loading="lazy"
-            class="gallery-image"
-          />
-          <div class="gallery-overlay">
-            <span class="gallery-caption">{imageAlts[index]?.split(' - ')[0] || 'Galriviera'}</span>
-          </div>
-        </div>
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <span class="gallery-eyebrow">GALRIVIERA</span>
+      <h2 class="gallery-heading">
+        <slot name="title">Flotte, Prestations &amp; Destinations</slot>
+      </h2>
+      <p class="gallery-intro">
+        Découvrez nos catégories de véhicules, l'accompagnement de nos chauffeurs et les itinéraires emblématiques de la Côte d'Azur.
+      </p>
+    </div>
+
+    <div class="gallery-tabs" role="tablist" aria-label="Catégories de la galerie">
+      <button type="button" class="gallery-tab active" data-filter="all" role="tab" aria-selected="true">
+        Tout voir
+      </button>
+      {gallerySections.map((sec) => (
+        <button type="button" class="gallery-tab" data-filter={sec.id} role="tab" aria-selected="false">
+          {sec.label}
+        </button>
       ))}
     </div>
+
+    {gallerySections.map((sec) => (
+      <div class="gallery-group" data-category={sec.id}>
+        <h3 class="gallery-group-title">{sec.label}</h3>
+        <div class="gallery-grid">
+          {sec.items.map((item) => (
+            <figure class="gallery-item">
+              <img
+                src={item.src}
+                alt={item.alt}
+                width="480"
+                height="270"
+                decoding="async"
+                loading="lazy"
+                class="gallery-image"
+              />
+              <figcaption class="gallery-caption">{item.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    ))}
   </div>
 </section>
 
 <style>
-  .font-heading {
-    font-family: 'Rubik', sans-serif;
+  .gallery-section {
+    padding: 4.5rem 0;
+    background: #faf8f4;
   }
-  
+
+  .gallery-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+  }
+
+  .gallery-eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: #9e824c;
+    margin-bottom: 0.5rem;
+  }
+
+  .gallery-heading {
+    color: #0f1115;
+    margin-bottom: 0.75rem;
+  }
+
+  .gallery-intro {
+    color: #555963;
+    font-size: 0.98rem;
+  }
+
+  .gallery-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .gallery-tab {
+    background: #ffffff;
+    color: #272a32;
+    border: 1px solid #dcd9d0;
+    padding: 0.55rem 1.2rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .gallery-tab:hover {
+    border-color: #c6a972;
+    color: #0f1115;
+  }
+
+  .gallery-tab.active {
+    background: #0f1115;
+    color: #faf8f4;
+    border-color: #0f1115;
+  }
+
+  .gallery-group {
+    margin-bottom: 2.5rem;
+  }
+
+  .gallery-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .gallery-group.is-hidden {
+    display: none;
+  }
+
+  .gallery-group-title {
+    font-size: 1.25rem;
+    color: #0f1115;
+    margin-bottom: 1rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid rgba(198, 169, 114, 0.35);
+  }
+
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.1rem;
   }
-  
+
   @media (min-width: 640px) {
     .gallery-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
-  
+
   @media (min-width: 1024px) {
     .gallery-grid {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
-  
+
   .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 0.75rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    aspect-ratio: 16 / 9;
-    cursor: pointer;
+    border-radius: 8px;
+    background: #0f1115;
+    box-shadow: 0 4px 14px rgba(15, 17, 21, 0.08);
+    margin: 0;
   }
-  
+
   .gallery-image {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
-    object-position: center;
-    transition: transform 0.5s ease;
+    display: block;
+    transition: transform 0.35s ease;
   }
-  
+
   .gallery-item:hover .gallery-image {
-    transform: scale(1.1);
+    transform: scale(1.04);
   }
-  
-  .gallery-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0, 35, 102, 0.85) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    display: flex;
-    align-items: flex-end;
-    padding: 1rem;
-  }
-  
-  .gallery-item:hover .gallery-overlay {
-    opacity: 1;
-  }
-  
+
   .gallery-caption {
-    color: #ffffff;
+    padding: 0.7rem 0.9rem;
+    background: #ffffff;
+    color: #0f1115;
+    font-size: 0.88rem;
     font-weight: 600;
-    font-size: 0.9rem;
+    border-top: 1px solid #ece9e0;
   }
 </style>
 
+<script is:inline>
+  (function() {
+    const tabs = document.querySelectorAll('.gallery-tab');
+    const groups = document.querySelectorAll('.gallery-group');
+    if (!tabs.length || !groups.length) return;
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const filter = tab.getAttribute('data-filter');
+        tabs.forEach((t) => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        groups.forEach((g) => {
+          if (filter === 'all' || g.getAttribute('data-category') === filter) {
+            g.classList.remove('is-hidden');
+          } else {
+            g.classList.add('is-hidden');
+          }
+        });
+      });
+    });
+  })();
+</script>

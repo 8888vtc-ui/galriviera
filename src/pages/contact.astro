@@ -5,11 +5,13 @@ const title = "Contactez Galriviera | Chauffeur Privé VTC Côte d'Azur";
 const description = "Réservez votre chauffeur privé VTC à Nice, Cannes, Monaco. Contactez-nous pour un devis personnalisé ou une réservation immédiate.";
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description}
+  alternateLinks={{ fr: "contact", en: "nice-airport-transfer-private-driver" }}
+>
   <section class="hero-banner" style="min-height: 50vh;">
     <div class="hero-image-container">
       <div class="hero-overlay"></div>
-      <img src="/assets/img/hero/hero-riviera.webp" alt="Contact Galriviera" class="hero-background-image" />
+      <img src="/assets/img/hero/hero-home-riviera.webp" alt="Contact Galriviera" class="hero-background-image" />
     </div>
     <div class="hero-content">
       <h1 class="hero-title">Contactez-nous</h1>
@@ -47,8 +49,9 @@ const description = "Réservez votre chauffeur privé VTC à Nice, Cannes, Monac
             <div>
               <h3>Adresse</h3>
               <p>
-                SASU Absig<br>
-                120 route de macarons<br>
+                ABSIG CONSULTING (GALRIVIERA)<br>
+                N° EVTC006230586<br>
+                120 route des Macarons<br>
                 06560 Valbonne, France
               </p>
             </div>

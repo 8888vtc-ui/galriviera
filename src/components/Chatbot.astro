@@ -121,14 +121,14 @@ const t = translations[currentLang] || translations.fr;
       const currentLang = container.dataset.lang;
 
       const toggle = document.getElementById('chatbot-toggle');
-      const window = document.getElementById('chatbot-window');
+      const chatWindow = document.getElementById('chatbot-window');
       const close = document.getElementById('chatbot-close');
       const form = document.getElementById('chatbot-form');
       const input = document.getElementById('chatbot-input');
       const messages = document.getElementById('chatbot-messages');
       const sendButton = form?.querySelector('.chatbot-send');
 
-      if (!toggle || !window || !form || !input || !messages) {
+      if (!toggle || !chatWindow || !form || !input || !messages) {
         console.error('Chatbot elements not found');
         return;
       }
@@ -137,9 +137,12 @@ const t = translations[currentLang] || translations.fr;
       let isFormInteraction = false;
 
       function openChatbot() {
-        window.classList.add('open');
-        window.setAttribute('aria-hidden', 'false');
+        chatWindow.classList.add('open');
+        chatWindow.setAttribute('aria-hidden', 'false');
         toggle.setAttribute('aria-expanded', 'true');
+        if (typeof window.galrivieraTrack === 'function') {
+          window.galrivieraTrack('chatbot_open', { language: currentLang });
+        }
         // Sur mobile, ne pas focus immédiatement pour éviter le scroll
         if (window.innerWidth > 768) {
           setTimeout(() => {
@@ -149,8 +152,8 @@ const t = translations[currentLang] || translations.fr;
       }
 
       function closeChatbot() {
-        window.classList.remove('open');
-        window.setAttribute('aria-hidden', 'true');
+        chatWindow.classList.remove('open');
+        chatWindow.setAttribute('aria-hidden', 'true');
         toggle.setAttribute('aria-expanded', 'false');
         input.blur();
         isFormInteraction = false;
@@ -208,6 +211,9 @@ const t = translations[currentLang] || translations.fr;
         }
 
         addMessage(userMessage, true);
+        if (typeof window.galrivieraTrack === 'function') {
+          window.galrivieraTrack('chatbot_message', { language: currentLang });
+        }
         input.value = '';
         
         // Sur mobile, ne pas blur immédiatement
@@ -237,8 +243,18 @@ const t = translations[currentLang] || translations.fr;
           if (data.reply) {
             addMessage(data.reply);
             
-            // Si le message contient des infos de réservation
-            if (data.reply.toLowerCase().includes('whatsapp') || data.reply.toLowerCase().includes('réserv')) {
+            // Si le message contient des infos de réservation (FR / EN / HE)
+            const replyLower = data.reply.toLowerCase();
+            if (
+              replyLower.includes('whatsapp') ||
+              replyLower.includes('réserv') ||
+              replyLower.includes('devis') ||
+              replyLower.includes('quote') ||
+              replyLower.includes('book') ||
+              data.reply.includes('בוואטסאפ') ||
+              data.reply.includes('הזמנ') ||
+              data.reply.includes('הצעת מחיר')
+            ) {
               setTimeout(() => {
                 const whatsappMsg = document.createElement('div');
                 whatsappMsg.className = 'chatbot-message chatbot-message-bot chatbot-whatsapp-message';
@@ -275,7 +291,7 @@ const t = translations[currentLang] || translations.fr;
       toggle.addEventListener('click', (e) => {
         e.stopPropagation();
         e.preventDefault();
-        if (window.classList.contains('open')) {
+        if (chatWindow.classList.contains('open')) {
           closeChatbot();
         } else {
           openChatbot();
@@ -286,7 +302,7 @@ const t = translations[currentLang] || translations.fr;
       toggle.addEventListener('touchend', (e) => {
         e.stopPropagation();
         e.preventDefault();
-        if (window.classList.contains('open')) {
+        if (chatWindow.classList.contains('open')) {
           closeChatbot();
         } else {
           openChatbot();
@@ -355,8 +371,8 @@ const t = translations[currentLang] || translations.fr;
 
       // Fermer en cliquant en dehors (mais pas lors d'une interaction avec le formulaire)
       document.addEventListener('click', (e) => {
-        if (window.classList.contains('open') && !isFormInteraction) {
-          const isClickInside = window.contains(e.target) || toggle.contains(e.target);
+        if (chatWindow.classList.contains('open') && !isFormInteraction) {
+          const isClickInside = chatWindow.contains(e.target) || toggle.contains(e.target);
           if (!isClickInside) {
             closeChatbot();
           }
@@ -365,8 +381,8 @@ const t = translations[currentLang] || translations.fr;
 
       // Support touch pour fermer en dehors
       document.addEventListener('touchend', (e) => {
-        if (window.classList.contains('open') && !isFormInteraction) {
-          const isTouchInside = window.contains(e.target) || toggle.contains(e.target);
+        if (chatWindow.classList.contains('open') && !isFormInteraction) {
+          const isTouchInside = chatWindow.contains(e.target) || toggle.contains(e.target);
           if (!isTouchInside) {
             closeChatbot();
           }
@@ -375,7 +391,7 @@ const t = translations[currentLang] || translations.fr;
 
       // Fermer avec Escape
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && window.classList.contains('open')) {
+        if (e.key === 'Escape' && chatWindow.classList.contains('open')) {
           closeChatbot();
         }
       });

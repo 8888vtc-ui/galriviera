@@ -10,7 +10,7 @@ export const allReviews = [
 
 export const aggregateRating = {
     ratingValue: "5.0",
-    reviewCount: "", // Vide pour ne pas afficher le nombre
+    reviewCount: allReviews.length.toString(),
     bestRating: "5",
     worstRating: "1"
 };

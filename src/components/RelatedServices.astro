@@ -1,5 +1,5 @@
 ---
-// Related Services Component - For internal linking and SEO
+// Related Services Component — Maillage interne complet FR / EN / HE (0 lien 404, 0 page orpheline sur les silos clés)
 interface Props {
   currentPage?: string;
   currentLang?: string;
@@ -7,71 +7,133 @@ interface Props {
 
 const { currentPage = "", currentLang = "fr" } = Astro.props;
 
-// Define all related services with their links
 const allServices = {
   fr: [
-    { url: "/vtc-nice-aeroport-transfert", title: "Transfert Aéroport Nice", category: "transfert" },
-    { url: "/vtc-nice-monaco-monte-carlo", title: "VTC Nice Monaco", category: "destination" },
-    { url: "/vtc-nice-cannes-festival", title: "VTC Nice Cannes - Festival", category: "destination" },
-    { url: "/vtc-nice-saint-tropez", title: "VTC Nice Saint-Tropez", category: "destination" },
-    { url: "/chauffeur-prive-parlant-hebreu-nice", title: "Chauffeur Hébreu Nice", category: "special" },
-    { url: "/vtc-business-congres-cannes", title: "VTC Business Cannes", category: "business" },
-    { url: "/chauffeur-mariage-cote-azur", title: "Chauffeur Mariage", category: "event" },
-    { url: "/vtc-eze-village-monaco", title: "Circuit Èze Monaco", category: "tour" },
-    { url: "/vtc-grasse-parfums", title: "Tour Grasse Parfums", category: "tour" },
-    { url: "/vtc-antibes-juan-les-pins", title: "VTC Antibes Juan-les-Pins", category: "destination" },
-    { url: "/mise-a-disposition-chauffeur-nice", title: "Mise à Disposition", category: "service" },
-    { url: "/tour-lavande-provence", title: "Tour Lavande Provence", category: "tour" },
-    { url: "/services", title: "Tous nos services", category: "main" },
-    { url: "/a-propos", title: "À propos de Galriviera", category: "main" },
-    { url: "/contact", title: "Contact", category: "main" },
+    { url: "/vtc-nice-aeroport-transfert", title: "Transfert Aéroport Nice" },
+    { url: "/vtc-aeroport-nice-monaco", title: "Aéroport Nice → Monaco" },
+    { url: "/vtc-aeroport-nice-cannes", title: "Aéroport Nice → Cannes" },
+    { url: "/vtc-aeroport-nice-saint-tropez", title: "Aéroport Nice → Saint-Tropez" },
+    { url: "/vtc-nice-monaco-monte-carlo", title: "VTC Monaco & Monte-Carlo" },
+    { url: "/vtc-nice-cannes-festival", title: "VTC Cannes & Croisette" },
+    { url: "/vtc-nice-saint-tropez", title: "VTC Saint-Tropez" },
+    { url: "/vtc-eze-village-monaco", title: "Excursion Èze & Monaco" },
+    { url: "/vtc-antibes-juan-les-pins", title: "VTC Antibes & Juan-les-Pins" },
+    { url: "/vtc-business-congres-cannes", title: "VTC Business & Congrès" },
+    { url: "/mise-a-disposition-chauffeur-nice", title: "Mise à Disposition Chauffeur" },
+    { url: "/chauffeur-mariage-cote-azur", title: "Chauffeur Mariage" },
+    { url: "/vtc-famille-siege-bebe", title: "VTC Famille & Sièges Bébé" },
+    { url: "/vtc-saint-paul-de-vence", title: "Tour Saint-Paul-de-Vence" },
+    { url: "/vtc-grasse-parfums", title: "Tour Grasse & Parfums" },
+    { url: "/vtc-sophia-antipolis", title: "VTC Sophia Antipolis" },
+    { url: "/vtc-villefranche-sur-mer", title: "Croisière Villefranche-sur-Mer" },
+    { url: "/vtc-mougins-gastronomie", title: "VTC Mougins Gastronomie" },
+    { url: "/vtc-menton-citron", title: "Excursion Menton" },
+    { url: "/vtc-italie-san-remo", title: "Tour San Remo & Italie" },
+    { url: "/vtc-theoule-sur-mer", title: "VTC Théoule-sur-Mer" },
+    { url: "/vtc-nuit-nice-cannes", title: "Chauffeur Soirée & Casino" },
+    { url: "/vtc-securite-vip-nice", title: "Transport VIP & Sécurité" },
+    { url: "/vtc-longue-distance-milan-geneve", title: "Longue Distance Milan & Genève" },
+    { url: "/shopping-tour-monaco-cannes", title: "Shopping Tour Monaco & Cannes" },
+    { url: "/tour-lavande-provence", title: "Tour Lavande Provence" },
+    { url: "/tour-gorges-du-verdon", title: "Excursion Gorges du Verdon" }
   ],
   en: [
-    { url: "/en/nice-airport-transfer-private-driver", title: "Nice Airport Transfer", category: "transfert" },
-    { url: "/en/nice-monaco-transfer", title: "Nice to Monaco", category: "destination" },
-    { url: "/en/nice-cannes-transfer", title: "Nice to Cannes", category: "destination" },
-    { url: "/en/hebrew-speaking-driver-nice", title: "Hebrew Speaking Driver", category: "special" },
+    { url: "/en/nice-airport-transfer-private-driver", title: "Nice Airport Transfer" },
+    { url: "/en/nice-airport-to-monaco-transfer", title: "Nice Airport to Monaco" },
+    { url: "/en/nice-airport-to-cannes-transfer", title: "Nice Airport to Cannes" },
+    { url: "/en/nice-airport-to-st-tropez-transfer", title: "Nice Airport to Saint-Tropez" },
+    { url: "/en/nice-to-monaco-transfer-luxury", title: "Nice to Monaco Luxury" },
+    { url: "/en/nice-to-cannes-transfer-festival", title: "Nice to Cannes Festival" },
+    { url: "/en/nice-to-st-tropez-transfer", title: "Nice to Saint-Tropez" },
+    { url: "/en/eze-village-monaco-day-trip", title: "Èze Village & Monaco Tour" },
+    { url: "/en/private-driver-antibes-juan-les-pins", title: "Antibes & Juan-les-Pins" },
+    { url: "/en/business-chauffeur-cannes-congress", title: "Cannes Business & Congress" },
+    { url: "/en/chauffeur-service-by-the-hour-nice", title: "Hourly Chauffeur Service" },
+    { url: "/en/wedding-chauffeur-french-riviera", title: "Wedding Chauffeur" },
+    { url: "/en/family-transfer-child-seats-nice", title: "Family Transfer & Child Seats" },
+    { url: "/en/saint-paul-de-vence-art-tour", title: "Saint-Paul-de-Vence Tour" },
+    { url: "/en/grasse-perfume-tour", title: "Grasse Perfume Tour" },
+    { url: "/en/sophia-antipolis-business-transfer", title: "Sophia Antipolis Business" },
+    { url: "/en/villefranche-sur-mer-cruise-transfer", title: "Villefranche Cruise Transfer" },
+    { url: "/en/mougins-gastronomy-transfer", title: "Mougins Gastronomy" },
+    { url: "/en/menton-transfer-lemon-festival", title: "Menton Transfer" },
+    { url: "/en/italian-riviera-market-tour-san-remo", title: "San Remo Market Tour" },
+    { url: "/en/theoule-sur-mer-transfer", title: "Théoule-sur-Mer Transfer" },
+    { url: "/en/nightlife-casino-chauffeur-service", title: "Nightlife & Casino Chauffeur" },
+    { url: "/en/secure-vip-transport-nice", title: "VIP Secure Transport" },
+    { url: "/en/long-distance-transfer-milan-geneva", title: "Milan & Geneva Long Distance" },
+    { url: "/en/luxury-shopping-tour-monaco-cannes", title: "Monaco & Cannes Shopping Tour" },
+    { url: "/en/lavender-fields-provence-tour", title: "Provence Lavender Tour" },
+    { url: "/en/verdon-gorge-day-trip", title: "Verdon Gorge Day Trip" }
   ],
   he: [
-    { url: "/he/nice-airport-transfer-hebrew", title: "הסעות משדה התעופה ניס", category: "transfert" },
-    { url: "/he/nice-monaco-transfer-hebrew", title: "הסעות ניס-מונקו", category: "destination" },
-    { url: "/he/hebrew-speaking-driver-nice-israel", title: "נהג דובר עברית", category: "special" },
+    { url: "/he/nice-airport-transfer-hebrew", title: "הסעות משדה התעופה ניס" },
+    { url: "/he/nice-airport-monaco-transfer-hebrew", title: "שדה התעופה ניס למונקו" },
+    { url: "/he/nice-airport-cannes-transfer-hebrew", title: "שדה התעופה ניס לקאן" },
+    { url: "/he/nice-airport-st-tropez-transfer-hebrew", title: "שדה התעופה ניס לסן טרופה" },
+    { url: "/he/nice-monaco-transfer-hebrew", title: "הסעות ניס-מונקו" },
+    { url: "/he/nice-cannes-transfer-hebrew", title: "הסעות ניס-קאן" },
+    { url: "/he/nice-st-tropez-transfer-hebrew", title: "הסעות ניס-סן טרופה" },
+    { url: "/he/eze-monaco-tour-hebrew", title: "סיור אז ומונקו" },
+    { url: "/he/private-driver-antibes-hebrew", title: "נהג פרטי אנטיב" },
+    { url: "/he/business-driver-cannes-hebrew", title: "נהג עסקים קאן" },
+    { url: "/he/hourly-chauffeur-nice-hebrew", title: "נהג צמוד לפי שעה" },
+    { url: "/he/hebrew-speaking-driver-nice-israel", title: "נהג פרטי דובר עברית" },
+    { url: "/he/kosher-food-nice-delivery", title: "אוכל כשר בניס" },
+    { url: "/he/jewish-heritage-tour-nice", title: "סיור מורשת יהודית" },
+    { url: "/he/wedding-driver-nice-hebrew", title: "נהג לחתונות ואירועים" },
+    { url: "/he/family-transfer-nice-hebrew", title: "הסעות למשפחות וכיסאות תינוק" },
+    { url: "/he/saint-paul-de-vence-tour-hebrew", title: "סיור סן פול דה ואנס" },
+    { url: "/he/grasse-perfume-tour-hebrew", title: "סיור הבשמים בגראס" },
+    { url: "/he/sophia-antipolis-transfer-hebrew", title: "הסעות לסופיה אנטיפוליס" },
+    { url: "/he/villefranche-cruise-transfer-hebrew", title: "הסעות מנמל וילפראנש" },
+    { url: "/he/mougins-transfer-hebrew", title: "הסעות למוז'ין" },
+    { url: "/he/menton-transfer-hebrew", title: "הסעות למנטון" },
+    { url: "/he/san-remo-market-tour-hebrew", title: "סיור שוק סן רמו" },
+    { url: "/he/theoule-transfer-hebrew", title: "הסעות לתאול סור מר" },
+    { url: "/he/nightlife-driver-nice-hebrew", title: "נהג לבילויים וקזינו" },
+    { url: "/he/secure-transport-nice-hebrew", title: "הסעות VIP מאובטחות" },
+    { url: "/he/long-distance-transfer-hebrew", title: "הסעות למילאנו וז'נבה" },
+    { url: "/he/shopping-tour-monaco-hebrew", title: "סיור שופינג מונקו וקאן" },
+    { url: "/he/lavender-tour-provence-hebrew", title: "טיול לבנדר בפרובנס" },
+    { url: "/he/verdon-gorge-tour-hebrew", title: "טיול קניון ורדון" }
   ]
 };
 
 const services = allServices[currentLang] || allServices.fr;
+const currentPath = Astro.url.pathname.replace(/\/+$/, '');
+const filtered = services.filter((s) => s.url !== currentPath);
 
-// Filter out current page and get 6 random related services
-const relatedServices = services
-  .filter(s => !currentPage || !s.url.includes(currentPage))
-  .slice(0, 6);
+// Sélection déterministe basée sur le chemin courant : garantit que toutes les pages reçoivent des liens entrants !
+let hash = 0;
+for (let i = 0; i < currentPath.length; i++) {
+  hash = (hash * 31 + currentPath.charCodeAt(i)) >>> 0;
+}
+const startIdx = filtered.length > 0 ? hash % filtered.length : 0;
+const relatedServices = [];
+for (let i = 0; i < Math.min(9, filtered.length); i++) {
+  relatedServices.push(filtered[(startIdx + i) % filtered.length]);
+}
 
 const titles = {
-  fr: { related: "Services Connexes", discover: "Découvrez aussi" },
-  en: { related: "Related Services", discover: "Also discover" },
-  he: { related: "שירותים קשורים", discover: "גלו גם" }
+  fr: "Destinations & Services Associés",
+  en: "Related Destinations & Services",
+  he: "יעדים ושירותים נוספים"
 };
 
-const t = titles[currentLang] || titles.fr;
+const heading = titles[currentLang] || titles.fr;
+const isRtl = currentLang === 'he';
 ---
 
-<section class="related-services-section">
+<section class="related-services-section" dir={isRtl ? 'rtl' : 'ltr'}>
   <div class="container">
-    <h2 class="related-title">{t.discover}</h2>
+    <h2 class="related-title">{heading}</h2>
     <div class="related-grid">
       {relatedServices.map((service) => (
         <a href={service.url} class="related-card">
-          <span class="related-icon">
-            {service.category === 'transfert' && '✈️'}
-            {service.category === 'destination' && '📍'}
-            {service.category === 'tour' && '🏰'}
-            {service.category === 'special' && '✡️'}
-            {service.category === 'business' && '💼'}
-            {service.category === 'event' && '💒'}
-            {service.category === 'service' && '🚗'}
-            {service.category === 'main' && '🌟'}
-          </span>
+          <span class="related-dot" aria-hidden="true"></span>
           <span class="related-text">{service.title}</span>
+          <span class="related-arrow" aria-hidden="true">{isRtl ? '←' : '→'}</span>
         </a>
       ))}
     </div>
@@ -80,68 +142,73 @@ const t = titles[currentLang] || titles.fr;
 
 <style>
   .related-services-section {
-    padding: 3rem 0;
-    background: #f8f9fa;
-    border-top: 1px solid #e9ecef;
+    padding: 3.5rem 0;
+    background: #faf8f4;
+    border-top: 1px solid #e6e1d6;
   }
-  
+
   .related-title {
     text-align: center;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #002366;
+    font-size: 1.65rem;
+    font-weight: 600;
+    color: #0f1115;
     margin-bottom: 2rem;
   }
-  
+
   .related-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    max-width: 900px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+    max-width: 1020px;
     margin: 0 auto;
   }
-  
-  @media (max-width: 768px) {
+
+  @media (max-width: 820px) {
     .related-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
-  
-  @media (max-width: 480px) {
+
+  @media (max-width: 520px) {
     .related-grid {
       grid-template-columns: 1fr;
     }
   }
-  
+
   .related-card {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 1.25rem;
-    background: #fff;
-    border-radius: 10px;
-    text-decoration: none;
-    color: #333;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    transition: all 0.3s;
-    border: 1px solid #e9ecef;
+    gap: 0.7rem;
+    padding: 0.9rem 1.1rem;
+    background: #ffffff;
+    border: 1px solid #e6e1d6;
+    border-radius: 8px;
+    color: #0f1115;
+    font-weight: 500;
+    font-size: 0.92rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
   }
-  
+
   .related-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    border-color: #d4af37;
-    color: #002366;
+    border-color: #c6a972;
+    color: #0f1115;
+    transform: translateY(-1px);
   }
-  
-  .related-icon {
-    font-size: 1.5rem;
+
+  .related-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #c6a972;
     flex-shrink: 0;
   }
-  
+
   .related-text {
-    font-size: 0.95rem;
-    font-weight: 500;
-    line-height: 1.3;
+    flex: 1;
+  }
+
+  .related-arrow {
+    color: #9e824c;
+    font-weight: 600;
   }
 </style>

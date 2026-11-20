@@ -2,174 +2,459 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Gallery from '../components/Gallery.astro';
 import BookingWidget from '../components/BookingWidget.astro';
-import Reviews from '../components/Reviews.astro';
+
+const alternateLinks = {
+  fr: '',
+  en: 'nice-airport-transfer-private-driver'
+};
 ---
 
 <BaseLayout
-  title="Galriviera - Chauffeur privé VTC premium sur la Côte d'Azur"
-  description="Transferts aéroport Nice, Monaco, Cannes, Saint-Tropez. Circuits privés, conciergerie casher, chauffeurs francophones/anglophones/hébraïsants. Service 24/7, flotte Mercedes haut de gamme."
+  title="Galriviera | Chauffeur Privé Premium Côte d'Azur & Nice"
+  description="Votre chauffeur privé premium sur la Côte d'Azur : Nice, Cannes, Monaco, Saint-Tropez. Transferts aéroport, affaires, excursions privées et devis rapide."
+  currentPage="index"
   currentLang="fr"
+  alternateLinks={alternateLinks}
 >
-  <!-- Hero Section -->
-  <section class="hero-banner" style="min-height: 80vh;">
+  <!-- Hero Section : Compréhensible en 5 secondes, CTA visible sans défilement -->
+  <section class="hero-banner hero-home">
     <div class="hero-image-container">
-      <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(0, 35, 102, 0.7), rgba(0, 35, 102, 0.5));"></div>
-      <img src="/assets/img/hero/hero-riviera.webp" alt="French Riviera Luxury" class="hero-background-image" style="object-fit: cover; width: 100%; height: 100%;" onerror="this.src='https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1920&auto=format&fit=crop'"/>
+      <div class="hero-overlay"></div>
+      <img
+        src="/assets/img/hero/hero-home-riviera.webp"
+        alt="Chauffeur privé premium GALRIVIERA sur la Côte d'Azur"
+        class="hero-background-image"
+        loading="eager"
+        fetchpriority="high"
+        width="1600"
+        height="900"
+      />
     </div>
-    <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-      <h1 class="hero-title" style="font-family: 'Rubik', sans-serif; letter-spacing: 1px;">BIENVENUE SUR LA CÔTE D'AZUR</h1>
-      <p class="hero-subtitle" style="font-family: 'Rubik', sans-serif;">Transport privé haut de gamme</p>
-      <a href="https://wa.me/33682267342" class="hero-cta-button" style="background: #d4af37; color: #002366;">RÉSERVER VOTRE CHAUFFEUR</a>
+    <div class="hero-content hero-home-content">
+      <p class="hero-cities">Nice · Cannes · Monaco · Saint-Tropez</p>
+      <h1 class="hero-title">Votre chauffeur privé premium sur la Côte d'Azur</h1>
+      <p class="hero-lead">
+        Transferts aéroport, déplacements d'affaires, excursions privées et mise à disposition avec chauffeur. Service personnalisé, discret et adapté à une clientèle internationale.
+      </p>
+      <div class="hero-actions">
+        <a href="#booking-widget" class="hero-cta-button hero-cta-primary">
+          Recevoir mon devis personnalisé
+        </a>
+        <a
+          href="https://wa.me/33682267342?text=Bonjour%20GALRIVIERA%2C%20je%20souhaite%20un%20devis%20personnalis%C3%A9."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero-cta-button hero-cta-secondary"
+        >
+          Contacter GALRIVIERA sur WhatsApp
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Booking Widget -->
+  <!-- Formulaire de devis structuré -->
   <div class="container relative z-20">
-    <BookingWidget currentLang="en" />
+    <BookingWidget currentLang="fr" />
   </div>
 
-  <!-- Intro Section -->
-  <section class="section-image-text">
+  <!-- Section Transfert Aéroport & Engagements -->
+  <section class="section-luxury">
     <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div data-aos="fade-right">
-          <h2 style="color: #002366; font-family: 'Rubik', sans-serif;">La Côte d'Azur, taillée pour vous</h2>
-          <p class="text-lg mb-6">
-            Vivez la Côte d'Azur avec Galriviera. Nous accompagnons vos déplacements avec un service premium : transferts <strong>aéroport de Nice</strong>, visites privées de <strong>Monaco et Cannes</strong>, conciergerie casher, chauffeurs parlant français, anglais et hébreu.
+      <div class="grid-two-cols">
+        <div>
+          <span class="eyebrow">TRANSFERT AÉROPORT & ACCOMPAGNEMENT</span>
+          <h2 class="section-title">Un service sur mesure, fluide et transparent</h2>
+          <p class="section-text">
+            Basé à Valbonne au cœur des Alpes-Maritimes, <strong>GALRIVIERA</strong> accompagne une clientèle privée et professionnelle entre l'<strong>aéroport de Nice Côte d'Azur (NCE)</strong>, Monaco, Cannes, Antibes et Saint-Tropez.
           </p>
-          <ul class="star-bullets space-y-4 mb-8">
-            <li class="flex items-center gap-3">
-              <span>Accueil VIP aéroport & Fast-Track sécurité (sur demande)</span>
+          <ul class="luxury-list">
+            <li>
+              <strong>Accueil aéroport organisé :</strong> communiqué avec votre numéro de vol et votre terminal, suivi des horaires en temps réel et prise en charge de vos bagages.
             </li>
-            <li class="flex items-center gap-3">
-              <span>Options casher et respect du Shabbat</span>
+            <li>
+              <strong>Déplacements d'affaires & congrès :</strong> ponctualité, discrétion et connaissance précise des itinéraires (Palais des Festivals, Sophia Antipolis, Monaco).
             </li>
-            <li class="flex items-center gap-3">
-              <span>Support en français / anglais / hébreu</span>
+            <li>
+              <strong>Clientèle internationale :</strong> accompagnement bilingue en français et en anglais selon vos besoins.
             </li>
-            <li class="flex items-center gap-3">
-              <span>Flotte Mercedes haut de gamme (Classe S, V)</span>
+            <li>
+              <strong>Options sur demande :</strong> sièges enfants, accueil personnalisé ou mise à disposition à l'heure, confirmés lors de l'établissement de votre devis.
             </li>
           </ul>
-          <a href="https://wa.me/33682267342" class="btn">DÉCOUVRIR NOS SERVICES</a>
+          <div class="mt-6">
+            <a href="/vtc-nice-aeroport-transfert" class="btn-outline-dark">
+              Détails des transferts aéroport →
+            </a>
+          </div>
         </div>
-        <div class="relative" data-aos="fade-left">
-          <img src="/assets/img/gallery/galriviera-luxury-1.webp" alt="Luxury Mercedes VTC" class="rounded-xl shadow-2xl" onerror="this.src='https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=1000&auto=format&fit=crop'"/>
-          <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-xl border-l-4 border-gold hidden md:block" data-aos="zoom-in" data-aos-delay="300">
-            <p class="text-blue-900 font-bold text-xl">Support 24/7</p>
-            <p class="text-gray-600">+33 6 82 26 73 42</p>
+        <div class="media-frame">
+          <img
+            src="/assets/img/gallery/service-airport-transfer.webp"
+            alt="Accueil chauffeur privé GALRIVIERA devant le terminal pour votre transfert sur la Côte d'Azur"
+            width="800"
+            height="450"
+            loading="lazy"
+            decoding="async"
+            class="framed-image"
+          />
+          <div class="contact-card-floating">
+            <span class="contact-card-label">Service client & réservations</span>
+            <a href="tel:+33682267342" class="contact-card-phone">+33 6 82 26 73 42</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider-star">
-    <svg viewBox="0 0 24 24"><path d="M12 2L15 9L22 9L17 14L19 21L12 17L5 21L7 14L2 9L9 9Z" /></svg>
-  </div>
-
-  <!-- Services Grid -->
-  <section class="py-20 bg-gray-50">
+  <!-- Prestations & Destinations Clés -->
+  <section class="section-cards">
     <div class="container">
-      <h2 class="text-3xl font-bold text-center mb-12" style="color: #002366; font-family: 'Rubik', sans-serif;" data-aos="fade-up">NOS SERVICES PREMIUM</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Card 1 -->
-        <div class="category-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="card-image-wrapper">
-            <img src="/assets/img/gallery/galriviera-luxury-4.webp" alt="Monaco Tour" class="card-image" onerror="this.src='https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=800&auto=format&fit=crop'"/>
-          </div>
-          <div class="card-content">
-            <h3 class="card-title">Monaco & Monte-Carlo</h3>
-            <p class="card-description">Excursions privées : Casino, Palais, shopping de luxe, sorties business.</p>
-            <a href="/vtc-nice-monaco-monte-carlo" class="card-link">Découvrir Monaco →</a>
-          </div>
-        </div>
+      <div class="section-header-center">
+        <span class="eyebrow">NOS PRESTATIONS</span>
+        <h2 class="section-title">Transferts, Excursions & Services Dédiés</h2>
+      </div>
 
-        <!-- Card 2 -->
-        <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="cards-grid">
+        <article class="service-card">
           <div class="card-image-wrapper">
-            <img src="/assets/img/gallery/galriviera-luxury-6.webp" alt="Cannes Croisette" class="card-image" onerror="this.src='https://images.unsplash.com/photo-1524312672933-60f3b9991b80?q=80&w=800&auto=format&fit=crop'"/>
+            <img
+              src="/assets/img/destinations/destination-eze.webp"
+              alt="Transfert et excursion privée vers Monaco et le village d'Èze"
+              width="480"
+              height="270"
+              loading="lazy"
+              decoding="async"
+              class="card-image"
+            />
           </div>
           <div class="card-content">
-            <h3 class="card-title">Cannes & Saint-Tropez</h3>
-            <p class="card-description">Montées des Marches, Croisette, plages de Pampelonne. Transferts élégants en Classe V.</p>
-            <a href="/vtc-nice-cannes-festival" class="card-link">Visiter Cannes →</a>
+            <h3 class="card-title">Monaco, Èze & Excursions Privées</h3>
+            <p class="card-description">
+              Itinéraires panoramiques sur mesure entre le village d'Èze, le Rocher de Monaco, Monte-Carlo et les villages perchés de l'arrière-pays.
+            </p>
+            <a href="/vtc-nice-monaco-monte-carlo" class="card-link">Découvrir Monaco & Èze →</a>
           </div>
-        </div>
+        </article>
 
-        <!-- Card 3 -->
-        <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+        <article class="service-card">
           <div class="card-image-wrapper">
-            <img src="/assets/img/hero/synagogue-nice.jpg" alt="Special Tour" class="card-image" onerror="this.src='https://images.unsplash.com/photo-1576670159805-381a9ee1e3c9?q=80&w=800&auto=format&fit=crop'"/>
+            <img
+              src="/assets/img/destinations/destination-cannes.webp"
+              alt="Chauffeur privé pour Cannes, la Croisette et les congrès"
+              width="480"
+              height="300"
+              loading="lazy"
+              decoding="async"
+              class="card-image"
+            />
           </div>
           <div class="card-content">
-            <h3 class="card-title">Patrimoine & Casher</h3>
-            <p class="card-description">Grande Synagogue de Nice, meilleures adresses casher, circuit culturel personnalisé.</p>
-            <a href="/excursion-tourisme-juif-nice" class="card-link">En savoir plus →</a>
+            <h3 class="card-title">Cannes, Congrès & Saint-Tropez</h3>
+            <p class="card-description">
+              Transferts et mises à disposition pour le Palais des Festivals, les salons professionnels (MIPIM, Cannes Lions) et vos séjours vers Saint-Tropez.
+            </p>
+            <a href="/vtc-nice-cannes-festival" class="card-link">Découvrir Cannes & Saint-Tropez →</a>
           </div>
-        </div>
+        </article>
+
+        <article class="service-card">
+          <div class="card-image-wrapper">
+            <img
+              src="/assets/img/gallery/fleet-van-luxe.webp"
+              alt="Van Mercedes Classe V 220d noir 7 places et mise à disposition GALRIVIERA"
+              width="480"
+              height="300"
+              loading="lazy"
+              decoding="async"
+              class="card-image"
+            />
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Van 7 Places & Mise à Disposition</h3>
+            <p class="card-description">
+              Voyagez à bord de notre Mercedes Classe V salon cuir ou SUV Executive 5008 GT avec chauffeur bilingue français / anglais à la demi-journée ou à la journée.
+            </p>
+            <a href="/mise-a-disposition-chauffeur-nice" class="card-link">Découvrir la mise à disposition →</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Gallery Section -->
+  <!-- Galerie organisée en 3 ensembles -->
   <Gallery />
 
-  <!-- Reviews Section -->
-  <Reviews currentLang="fr" />
-
-  <!-- CTA Section -->
-  <section class="py-20 text-white text-center relative overflow-hidden">
-    <div class="absolute inset-0 z-0" style="background: #002366;"></div>
-    <div class="container relative z-10" data-aos="zoom-in">
-      <h2 class="text-3xl font-bold mb-6" style="font-family: 'Rubik', sans-serif;">Prêt pour votre expérience Côte d'Azur ?</h2>
-      <p class="text-xl mb-8 max-w-2xl mx-auto">Réservez votre chauffeur privé et profitez d'un trajet fluide, sûr et luxueux.</p>
-      <div class="flex justify-center gap-4 flex-wrap">
-        <a href="https://wa.me/33682267342" class="btn" style="background: #25D366; color: white;">WhatsApp</a>
-        <a href="/contact" class="btn">Réserver en ligne</a>
+  <!-- Bandeau CTA final sobre -->
+  <section class="final-cta-section">
+    <div class="container final-cta-inner">
+      <h2 class="final-cta-title">Planifiez votre prochain déplacement sur la Côte d'Azur</h2>
+      <p class="final-cta-text">
+        Demandez votre devis personnalisé gratuitement ou échangez directement avec notre équipe sur WhatsApp.
+      </p>
+      <div class="hero-actions">
+        <a href="#booking-widget" class="hero-cta-button hero-cta-primary">
+          Recevoir mon devis personnalisé
+        </a>
+        <a
+          href="https://wa.me/33682267342"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero-cta-button hero-cta-secondary"
+        >
+          Contacter GALRIVIERA sur WhatsApp
+        </a>
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .text-gold { color: #d4af37; }
-  .border-gold { border-color: #d4af37; }
-  .bg-gray-50 { background-color: #f9fafb; }
-  .grid { display: grid; }
-  .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-  .gap-12 { gap: 3rem; }
-  .gap-8 { gap: 2rem; }
-  .gap-4 { gap: 1rem; }
-  .items-center { align-items: center; }
-  .mb-6 { margin-bottom: 1.5rem; }
-  .mb-8 { margin-bottom: 2rem; }
-  .mb-12 { margin-bottom: 3rem; }
-  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
-  .text-center { text-align: center; }
-  .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
-  .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
-  .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
-  .font-bold { font-weight: 700; }
-  .rounded-xl { border-radius: 0.75rem; }
-  .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
-  .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
-  .relative { position: relative; }
-  .absolute { position: absolute; }
-  .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
-  .z-0 { z-index: 0; }
-  .z-10 { z-index: 10; }
-  .z-20 { z-index: 20; }
-  .flex { display: flex; }
-  .justify-center { justify-content: center; }
-  .mx-auto { margin-left: auto; margin-right: auto; }
-  .max-w-2xl { max-width: 42rem; }
-  
+  .hero-home {
+    min-height: 74vh;
+    padding: 4.5rem 0 6.5rem;
+  }
+
+  .hero-home-content {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .hero-cities {
+    display: inline-block;
+    color: #dfc494;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .hero-lead {
+    color: rgba(250, 248, 244, 0.92);
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    line-height: 1.65;
+    max-width: 680px;
+    margin: 0 auto 2rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .hero-cta-primary {
+    background: #c6a972;
+    color: #0f1115;
+    border: 1px solid #c6a972;
+  }
+
+  .hero-cta-primary:hover {
+    background: #d5ba86;
+    color: #0f1115;
+  }
+
+  .hero-cta-secondary {
+    background: rgba(15, 17, 21, 0.65);
+    color: #faf8f4;
+    border: 1px solid rgba(250, 248, 244, 0.55);
+  }
+
+  .hero-cta-secondary:hover {
+    background: #25D366;
+    border-color: #25D366;
+    color: #ffffff;
+  }
+
+  .section-luxury {
+    padding: 4.5rem 0;
+    background: #ffffff;
+  }
+
+  .grid-two-cols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .grid-two-cols {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+    }
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: #9e824c;
+    margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    color: #0f1115;
+    margin-bottom: 1rem;
+  }
+
+  .section-text {
+    color: #3a3d45;
+    margin-bottom: 1.5rem;
+  }
+
+  .luxury-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .luxury-list li {
+    position: relative;
+    padding-left: 1.4rem;
+    color: #3a3d45;
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .luxury-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 7px;
+    height: 7px;
+    background: #c6a972;
+    border-radius: 50%;
+  }
+
+  .btn-outline-dark {
+    display: inline-block;
+    padding: 0.75rem 1.4rem;
+    border: 1px solid #0f1115;
+    color: #0f1115;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+  }
+
+  .btn-outline-dark:hover {
+    background: #0f1115;
+    color: #faf8f4;
+  }
+
+  .media-frame {
+    position: relative;
+  }
+
+  .framed-image {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 18px 36px rgba(15, 17, 21, 0.14);
+  }
+
+  .contact-card-floating {
+    background: #0f1115;
+    color: #faf8f4;
+    padding: 1rem 1.35rem;
+    border-radius: 8px;
+    border-left: 3px solid #c6a972;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .contact-card-label {
+    font-size: 0.8rem;
+    color: #dfc494;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .contact-card-phone {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #faf8f4;
+  }
+
+  .section-cards {
+    padding: 4.5rem 0;
+    background: #f5f1e8;
+  }
+
+  .section-header-center {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
   @media (min-width: 768px) {
-    .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .md\:block { display: block; }
+    .cards-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .service-card {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e6e1d6;
+    box-shadow: 0 6px 20px rgba(15, 17, 21, 0.06);
+  }
+
+  .card-link {
+    font-weight: 600;
+    color: #0f1115;
+    font-size: 0.95rem;
+  }
+
+  .card-link:hover {
+    color: #9e824c;
+  }
+
+  .final-cta-section {
+    padding: 4.5rem 0;
+    background: #0f1115;
+    color: #faf8f4;
+    text-align: center;
+  }
+
+  .final-cta-inner {
+    max-width: 760px;
+  }
+
+  .final-cta-title {
+    color: #faf8f4;
+    margin-bottom: 1rem;
+  }
+
+  .final-cta-text {
+    color: rgba(250, 248, 244, 0.85);
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero-home {
+      min-height: 62vh;
+      padding: 2.75rem 0 3.25rem;
+    }
+
+    .hero-cta-button {
+      width: 100%;
+    }
   }
 </style>
-
-

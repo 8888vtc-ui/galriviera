@@ -9,7 +9,7 @@ export default defineConfig({
   site: 'https://www.galriviera.com',
   integrations: [sitemap()],
   build: {
-    inlineStylesheets: 'always',
+    inlineStylesheets: 'auto',
     assets: 'assets'
   },
   vite: {
@@ -19,7 +19,7 @@ export default defineConfig({
       minify: 'terser',
       terserOptions: {
         compress: {
-          drop_console: true, // Supprime console.log en production
+          drop_console: true,
           drop_debugger: true
         }
       }
@@ -34,4 +34,3 @@ export default defineConfig({
   },
   compressHTML: true
 });
-
