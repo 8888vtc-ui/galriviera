@@ -25,7 +25,6 @@ const description = "Service VTC Premium : ${page.title}. Chauffeur privé bilin
     <div class="hero-content">
       <h1 class="hero-title text-4xl md:text-6xl font-bold mb-4">${page.title}</h1>
       <h2 class="text-2xl text-gold mb-6">${page.title_en}</h2>
-      <p class="text-xl text-white/90 font-hebrew" dir="rtl">${page.title_he}</p>
       <div class="mt-8">
         <a href="https://wa.me/33616552811" class="hero-cta-button">Réserver / Book Now</a>
       </div>
@@ -45,12 +44,8 @@ const description = "Service VTC Premium : ${page.title}. Chauffeur privé bilin
           </p>
           
           <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-gold mt-8">
-            <h3 class="text-xl font-bold text-blue-900 mb-2">Service Spécial Israélien / Israeli Special Service</h3>
-            <p class="text-gray-700 mb-2">We provide Hebrew speaking drivers and Kosher concierge services.</p>
-            <p class="font-hebrew text-right text-lg text-blue-900" dir="rtl">
-              אנו מספקים נהגים דוברי עברית ושירותי קונסיירז' כשר.
-              ${page.keywords_he}.
-            </p>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Conciergerie sur mesure</h3>
+            <p class="text-gray-700 mb-2">Nos chauffeurs parlent français et anglais. Un service de conciergerie casher peut être organisé sur demande.</p>
           </div>
         </div>
         
@@ -87,9 +82,9 @@ const description = "Service VTC Premium : ${page.title}. Chauffeur privé bilin
 
         <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
           <div class="text-4xl mb-4">💼</div>
-          <h3 class="text-xl font-bold mb-3">Service Flexible & Bilingue</h3>
+          <h3 class="text-xl font-bold mb-3">Service flexible en français et en anglais</h3>
           <p class="text-gray-600">
-            Nous parlons français, anglais et hébreu. Prestations adaptées aux familles, groupes et voyageurs d'affaires.
+            Nos chauffeurs parlent français et anglais. Prestations adaptées aux familles, groupes et voyageurs d'affaires.
             <strong>${page.keywords_en}</strong>.
           </p>
         </div>
@@ -111,7 +106,7 @@ const description = "Service VTC Premium : ${page.title}. Chauffeur privé bilin
       <h2 class="text-3xl font-bold mb-6">Réservez votre ${page.title}</h2>
       <p class="text-xl mb-8 max-w-2xl mx-auto">
         Disponible 24/7 pour tous vos déplacements sur la Côte d'Azur.
-        Service client en Français, Anglais et Hébreu.
+        Service client en français et en anglais.
       </p>
       <div class="flex justify-center gap-4 flex-wrap">
         <a href="https://wa.me/33616552811" class="btn bg-green-500 hover:bg-green-600 text-white border-none">
@@ -126,9 +121,6 @@ const description = "Service VTC Premium : ${page.title}. Chauffeur privé bilin
 </BaseLayout>
 
 <style>
-  .font-hebrew {
-    font-family: 'Rubik', sans-serif;
-  }
   .text-gold {
     color: #d4af37;
   }

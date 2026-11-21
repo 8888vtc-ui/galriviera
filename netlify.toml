@@ -35,3 +35,23 @@
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+[[redirects]]
+  from = "/chauffeur-prive-parlant-hebreu-nice"
+  to = "/chauffeur-prive-nice/"
+  status = 301
+
+[[redirects]]
+  from = "/chauffeur-prive-parlant-hebreu-nice/"
+  to = "/chauffeur-prive-nice/"
+  status = 301
+
+[[redirects]]
+  from = "/en/hebrew-speaking-driver-nice"
+  to = "/en/private-chauffeur-nice/"
+  status = 301
+
+[[redirects]]
+  from = "/en/hebrew-speaking-driver-nice/"
+  to = "/en/private-chauffeur-nice/"
+  status = 301

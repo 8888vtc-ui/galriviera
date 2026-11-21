@@ -75,6 +75,10 @@ iframe[src*="netlify" i] {
 
 /* === MOBILE === */
 @media (max-width: 768px) {
+    body.cookie-consent-pending .chatbot-container {
+        visibility: hidden;
+    }
+
     .whatsapp-button {
         display: none !important;
     }

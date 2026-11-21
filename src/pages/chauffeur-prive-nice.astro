@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BookingWidget from '../components/BookingWidget.astro';
+
+const title = "Chauffeur privé à Nice | Galriviera";
+const description = "Chauffeur privé VTC à Nice et sur la Côte d'Azur. Nos chauffeurs parlent français et anglais. Transferts et trajets sur mesure.";
+const alternateLinks = {
+  fr: "chauffeur-prive-nice",
+  en: "private-chauffeur-nice",
+  he: "hebrew-speaking-driver-nice-israel"
+};
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "Quelles langues parlent vos chauffeurs ?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nos chauffeurs parlent français et anglais."
+    }
+  }]
+};
+---
+
+<BaseLayout title={title} description={description} currentLang="fr" alternateLinks={alternateLinks} schema={faqSchema}>
+  <section class="hero-banner" style="min-height: 65vh;">
+    <div class="hero-image-container">
+      <div class="hero-overlay"></div>
+      <img src="/assets/img/hero/hero-home-riviera.webp" alt="Chauffeur privé GALRIVIERA sur la Côte d'Azur" class="hero-background-image" loading="eager" />
+    </div>
+    <div class="hero-content" data-aos="fade-up">
+      <span class="text-gold text-sm uppercase tracking-wider mb-2 block">VTC Premium Côte d'Azur</span>
+      <h1 class="hero-title text-4xl md:text-5xl font-bold mb-4">Chauffeur privé à Nice et sur la Côte d'Azur</h1>
+      <p class="text-xl text-white/90 mb-6">Nos chauffeurs parlent français et anglais.</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="https://wa.me/33682267342" class="hero-cta-button bg-green-500 hover:bg-green-600">Réserver sur WhatsApp</a>
+        <a href="#booking-widget" class="hero-cta-button bg-transparent border-2 border-white hover:bg-white hover:text-blue-900">Demander un devis</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container relative z-20 -mt-16">
+    <BookingWidget currentLang="fr" />
+  </div>
+
+  <article class="py-12 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h2 class="text-3xl font-bold text-blue-900 mb-6">Un service de chauffeur privé sur mesure</h2>
+      <p class="text-lg text-gray-700 mb-6">
+        GALRIVIERA vous accompagne pour vos transferts et déplacements privés ou professionnels à Nice et sur la Côte d'Azur. Choisissez votre trajet et recevez un devis personnalisé.
+      </p>
+      <p class="text-lg text-gray-700">Nos chauffeurs parlent français et anglais et vous accueillent à bord de véhicules confortables et adaptés à votre trajet.</p>
+      <h3 class="text-xl font-bold mt-8 mb-2">Quelles langues parlent vos chauffeurs ?</h3>
+      <p class="text-lg text-gray-700">Nos chauffeurs parlent français et anglais.</p>
+    </div>
+  </article>
+</BaseLayout>

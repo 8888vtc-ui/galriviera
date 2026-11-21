@@ -9,6 +9,7 @@ import RelatedServices from '../components/RelatedServices.astro';
 import InstallPWA from '../components/InstallPWA.astro';
 import { allReviews, aggregateRating } from '../data/reviews.ts';
 
+import '../styles/utilities.css';
 import '../styles/base.css';
 import '../styles/menu.css';
 import '../styles/components.css';
@@ -34,7 +35,7 @@ const {
   title,
   description,
   currentPage = "",
-  ogImage = "https://www.galriviera.com/assets/img/hero/hero-home-riviera.webp",
+  ogImage = "https://galriviera.com/assets/img/hero/hero-home-riviera.webp",
   canonical,
   schema,
   skipBaseSchema = false,
@@ -44,24 +45,39 @@ const {
 } = Astro.props;
 
 const canonicalUrl = canonical || Astro.url.pathname;
-const siteUrl = "https://www.galriviera.com";
+const siteUrl = "https://galriviera.com";
 const fullCanonical = `${siteUrl}${canonicalUrl}`;
 
 const hasExplicitAlternates = Boolean(alternateLinks.fr !== undefined || alternateLinks.en || alternateLinks.he);
 
+const localizedHref = (lang: 'fr' | 'en' | 'he', slug: string) => {
+  const normalizedSlug = slug.replace(/^\/+|\/+$/g, '');
+  const prefix = lang === 'fr' ? '' : `${lang}/`;
+  return normalizedSlug ? `${siteUrl}/${prefix}${normalizedSlug}/` : `${siteUrl}/`;
+};
+
 const frHref = alternateLinks.fr !== undefined
-  ? (alternateLinks.fr === '' || alternateLinks.fr === '/' ? `${siteUrl}/` : `${siteUrl}/${alternateLinks.fr.replace(/^\/+/, '')}`)
+  ? localizedHref('fr', alternateLinks.fr)
   : `${siteUrl}${Astro.url.pathname}`;
+
+const heHref = alternateLinks.he
+  ? localizedHref('he', alternateLinks.he)
+  : null;
+
+const enHref = alternateLinks.en
+  ? localizedHref('en', alternateLinks.en)
+  : null;
 
 const hreflangLinks = hasExplicitAlternates
   ? [
       { lang: 'fr', href: frHref },
-      ...(alternateLinks.en ? [{ lang: 'en', href: `${siteUrl}/en/${alternateLinks.en.replace(/^\/+/, '')}` }] : []),
+      ...(enHref ? [{ lang: 'en', href: enHref }] : []),
+      ...(heHref ? [{ lang: 'he', href: heHref }] : []),
       { lang: 'x-default', href: frHref }
     ]
   : [];
 
-const isRtl = false;
+const isRtl = currentLang === 'he';
 
 const uiStrings = {
   fr: {
@@ -79,9 +95,17 @@ const uiStrings = {
     cookieAccept: "Accept",
     cookieReject: "Decline",
     siteDesc: "Private chauffeur service on the French Riviera (Nice, Cannes, Monaco, Saint-Tropez). Airport transfers, business travel and private tours."
+  },
+  he: {
+    skip: "דלג לתוכן הראשי",
+    cookieText: "אנו משתמשים בעוגיות לשיפור חוויית הגלישה ולמדידת תנועת האתר.",
+    cookieLink: "מידע נוסף",
+    cookieAccept: "אישור",
+    cookieReject: "דחייה",
+    siteDesc: "שירות נהג פרטי בריביירה הצרפתית, כולל הסעות משדה התעופה ונסיעות פרטיות."
   }
 };
-const ui = uiStrings[currentLang === 'en' ? 'en' : 'fr'];
+const ui = uiStrings[currentLang === 'en' || currentLang === 'he' ? currentLang : 'fr'];
 const gaId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID || "";
 ---
 
@@ -141,10 +165,10 @@ const gaId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID || "";
         "@graph": [
           {
             "@type": ["LocalBusiness", "TaxiService"],
-            "@id": "https://www.galriviera.com/#localbusiness",
+            "@id": "https://galriviera.com/#localbusiness",
             "name": "GALRIVIERA – Luxury Travel",
-            "url": "https://www.galriviera.com/",
-            "image": "https://www.galriviera.com/assets/img/hero/hero-home-riviera.webp",
+            "url": "https://galriviera.com/",
+            "image": "https://galriviera.com/assets/img/hero/hero-home-riviera.webp",
             "telephone": "+33682267342",
             "email": "vtctransportsig@gmail.com",
             "priceRange": "$$$",
@@ -198,11 +222,11 @@ const gaId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID || "";
           },
           {
             "@type": "WebSite",
-            "@id": "https://www.galriviera.com/#website",
-            "url": "https://www.galriviera.com/",
+            "@id": "https://galriviera.com/#website",
+            "url": "https://galriviera.com/",
             "name": "GALRIVIERA – Luxury Travel",
             "description": ui.siteDesc,
-            "publisher": { "@id": "https://www.galriviera.com/#localbusiness" }
+            "publisher": { "@id": "https://galriviera.com/#localbusiness" }
           }
         ]
       })} />
@@ -359,6 +383,7 @@ const gaId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID || "";
           '<button type="button" id="reject-cookies">' + ui.cookieReject + '</button>' +
           '</div></div>';
         document.body.appendChild(banner);
+        document.body.classList.add('cookie-consent-pending');
 
         document.getElementById('accept-cookies')?.addEventListener('click', function() {
           localStorage.setItem('cookiesAccepted', 'true');
@@ -366,6 +391,7 @@ const gaId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID || "";
             window.gtag('consent', 'update', { analytics_storage: 'granted' });
           }
           banner.remove();
+          document.body.classList.remove('cookie-consent-pending');
         });
 
         document.getElementById('reject-cookies')?.addEventListener('click', function() {
@@ -374,6 +400,7 @@ const gaId = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID || "";
             window.gtag('consent', 'update', { analytics_storage: 'denied' });
           }
           banner.remove();
+          document.body.classList.remove('cookie-consent-pending');
         });
       });
     </script>

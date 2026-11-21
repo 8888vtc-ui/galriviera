@@ -26,16 +26,27 @@ const t = {
     book: "Quote",
     waMsg: "Hello GALRIVIERA, I would like a personalized quote.",
     waAria: "Contact GALRIVIERA on WhatsApp"
+  },
+  he: {
+    home: "ראשי",
+    services: "שירותים",
+    about: "מונקו",
+    contact: "צור קשר",
+    book: "הצעת מחיר",
+    waMsg: "שלום GALRIVIERA, אשמח לקבל הצעת מחיר מותאמת אישית.",
+    waAria: "צרו קשר עם GALRIVIERA בוואטסאפ"
   }
 };
 
-const labels = t[currentLang === 'en' ? 'en' : 'fr'];
+const lang = currentLang === 'en' || currentLang === 'he' ? currentLang : 'fr';
+const labels = t[lang];
 
 const navUrls = {
   fr: { home: "/", services: "/services", about: "/a-propos", contact: "/contact" },
-  en: { home: "/en/nice-airport-transfer-private-driver", services: "/en/nice-to-cannes-transfer-festival", about: "/en/nice-to-monaco-transfer-luxury", contact: "#booking-widget" }
+  en: { home: "/en/nice-airport-transfer-private-driver", services: "/en/nice-to-cannes-transfer-festival", about: "/en/nice-to-monaco-transfer-luxury", contact: "#booking-widget" },
+  he: { home: "/he/nice-airport-transfer-hebrew", services: "/he/hourly-chauffeur-nice-hebrew", about: "/he/nice-monaco-transfer-hebrew", contact: "#booking-widget" }
 };
-const urls = navUrls[currentLang === 'en' ? 'en' : 'fr'];
+const urls = navUrls[lang];
 const waUrl = `https://wa.me/33682267342?text=${encodeURIComponent(labels.waMsg)}`;
 ---
 

@@ -3,10 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Gallery from '../components/Gallery.astro';
 import BookingWidget from '../components/BookingWidget.astro';
 
-const alternateLinks = {
-  fr: '',
-  en: 'nice-airport-transfer-private-driver'
-};
 ---
 
 <BaseLayout
@@ -14,7 +10,6 @@ const alternateLinks = {
   description="Votre chauffeur privé premium sur la Côte d'Azur : Nice, Cannes, Monaco, Saint-Tropez. Transferts aéroport, affaires, excursions privées et devis rapide."
   currentPage="index"
   currentLang="fr"
-  alternateLinks={alternateLinks}
 >
   <!-- Hero Section : Compréhensible en 5 secondes, CTA visible sans défilement -->
   <section class="hero-banner hero-home">

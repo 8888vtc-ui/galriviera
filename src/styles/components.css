@@ -108,6 +108,10 @@
   max-width: 920px;
 }
 
+.hero-content > p {
+  color: rgba(250, 248, 244, 0.92);
+}
+
 .hero-title {
   font-size: clamp(2rem, 4.5vw, 3.25rem);
   font-weight: 600;

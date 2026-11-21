@@ -52,22 +52,11 @@ const generateFR = (page) => {
       benefits: [
         'Circuits personnalisables selon vos envies',
         'Recommandations restaurants et activités',
-        'Guides parlant français, anglais et hébreu',
+        'Guides parlant français et anglais',
         'Durée flexible (demi-journée à journée complète)',
         'Tarifs dégressifs pour groupes'
       ],
       pricing: 'Demi-journée à partir de 250€'
-    },
-    hebrew: {
-      intro: `Service <strong>exclusif pour les voyageurs israéliens</strong> avec chauffeurs parlant hébreu. Nous comprenons vos besoins spécifiques.`,
-      benefits: [
-        'Chauffeurs natifs parlant hébreu',
-        'Connaissance des restaurants casher de la région',
-        'Respect des horaires du Shabbat',
-        'Accompagnement pour les fêtes juives',
-        'Transferts vers les synagogues locales'
-      ],
-      pricing: 'Devis personnalisé sur demande'
     },
     service: {
       intro: `Un service <strong>premium et flexible</strong> adapté à tous vos besoins de mobilité sur la Côte d'Azur.`,
@@ -254,7 +243,7 @@ const faqSchema = {
             Avec plus de <strong>500 clients satisfaits</strong> et une note de <strong>4.9/5 sur Google</strong>, nous sommes la référence du transport VTC premium sur la Côte d'Azur. Notre équipe de chauffeurs professionnels est formée aux standards de l'hôtellerie de luxe.
           </p>
           <p class="text-gray-700 mb-6">
-            Que vous soyez un <strong>touriste israélien</strong> à la recherche d'un chauffeur parlant hébreu, un <strong>homme d'affaires</strong> participant au MIPIM ou au Festival de Cannes, ou une <strong>famille en vacances</strong>, nous adaptons notre service à vos besoins spécifiques.
+            Que vous soyez un <strong>visiteur</strong> à la recherche d'un chauffeur privé, un <strong>homme d'affaires</strong> participant au MIPIM ou au Festival de Cannes, ou une <strong>famille en vacances</strong>, nous adaptons notre service à vos besoins spécifiques.
           </p>
 
           <!-- Call to Action -->
@@ -295,7 +284,7 @@ const faqSchema = {
               <li><a href="/vtc-nice-aeroport-transfert" class="text-gray-600 hover:text-gold">→ Transfert Aéroport Nice</a></li>
               <li><a href="/vtc-nice-monaco-monte-carlo" class="text-gray-600 hover:text-gold">→ VTC Nice Monaco</a></li>
               <li><a href="/vtc-nice-cannes-festival" class="text-gray-600 hover:text-gold">→ VTC Nice Cannes</a></li>
-              <li><a href="/chauffeur-prive-parlant-hebreu-nice" class="text-gray-600 hover:text-gold">→ Chauffeur Hébreu</a></li>
+              <li><a href="/chauffeur-prive-nice" class="text-gray-600 hover:text-gold">→ Chauffeur privé Nice</a></li>
             </ul>
           </div>
         </aside>
@@ -315,9 +304,9 @@ const faqSchema = {
           </div>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-sm" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 class="font-bold text-lg mb-2" itemprop="name">Les chauffeurs parlent-ils anglais ou hébreu ?</h3>
+          <h3 class="font-bold text-lg mb-2" itemprop="name">Quelles langues parlent vos chauffeurs ?</h3>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p class="text-gray-600" itemprop="text">Oui, tous nos chauffeurs parlent couramment français et anglais. Nous disposons également de chauffeurs parlant hébreu pour nos clients israéliens, sur demande lors de la réservation.</p>
+            <p class="text-gray-600" itemprop="text">Nos chauffeurs parlent français et anglais.</p>
           </div>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-sm" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
@@ -423,16 +412,16 @@ const alternateLinks = ${alternateLinks};
         <div class="bg-gradient-to-r from-blue-50 to-gold/10 p-6 rounded-xl mb-8 border-l-4 border-gold">
           <h3 class="text-xl font-bold text-blue-900 mb-4">✨ Why Choose Us?</h3>
           <ul class="space-y-3">
-            <li class="flex items-start gap-3"><span class="text-gold font-bold">✓</span><span>Bilingual drivers (English, French, Hebrew available)</span></li>
+            <li class="flex items-start gap-3"><span class="text-gold font-bold">✓</span><span>Drivers speak French and English</span></li>
             <li class="flex items-start gap-3"><span class="text-gold font-bold">✓</span><span>Premium vehicles (Mercedes S-Class, V-Class, Tesla)</span></li>
-            <li class="flex items-start gap-3"><span class="text-gold font-bold">✓</span><span>24/7 availability with instant confirmation</span></li>
+            <li class="flex items-start gap-3"><span class="text-gold font-bold">✓</span><span>Requests are reviewed subject to availability</span></li>
             <li class="flex items-start gap-3"><span class="text-gold font-bold">✓</span><span>Fixed pricing with no hidden fees</span></li>
             <li class="flex items-start gap-3"><span class="text-gold font-bold">✓</span><span>Child seats available on request</span></li>
           </ul>
         </div>
 
         <p class="text-gray-700 mb-6">
-          Whether you're an <strong>Israeli tourist</strong> looking for a Hebrew-speaking driver, a <strong>business traveler</strong> attending MIPIM or the Cannes Festival, or a <strong>family on vacation</strong>, we tailor our service to your specific needs.
+          Whether you're a <strong>visitor</strong> looking for a private chauffeur, a <strong>business traveler</strong> attending MIPIM or the Cannes Festival, or a <strong>family on vacation</strong>, we tailor our service to your specific needs.
         </p>
 
         <div class="bg-blue-900 text-white p-6 rounded-xl text-center">
@@ -452,11 +441,11 @@ const alternateLinks = ${alternateLinks};
       <div class="max-w-3xl mx-auto space-y-4">
         <div class="bg-white p-6 rounded-lg shadow-sm">
           <h3 class="font-bold text-lg mb-2">How do I book my ${page.title_en}?</h3>
-          <p class="text-gray-600">Book in 30 seconds via WhatsApp (+33 6 82 26 73 42) or our online form. Instant confirmation guaranteed. We recommend booking at least 24 hours in advance.</p>
+          <p class="text-gray-600">Request a personalized quote via WhatsApp (+33 6 82 26 73 42) or our online form. Our team will confirm availability. We recommend booking at least 24 hours in advance.</p>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-sm">
-          <h3 class="font-bold text-lg mb-2">Do drivers speak English or Hebrew?</h3>
-          <p class="text-gray-600">Yes! All our drivers are fluent in French and English. We also have Hebrew-speaking drivers available for our Israeli clients upon request.</p>
+          <h3 class="font-bold text-lg mb-2">Which languages do your drivers speak?</h3>
+          <p class="text-gray-600">Our drivers speak French and English.</p>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-sm">
           <h3 class="font-bold text-lg mb-2">What vehicles do you offer?</h3>

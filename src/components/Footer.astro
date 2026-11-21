@@ -70,10 +70,42 @@ const t = {
       legal: "/mentions-legales-rgpd",
       hourly: "/en/chauffeur-service-by-the-hour-nice"
     }
+  },
+  he: {
+    serving: "אזורי שירות: ניס, קאן, אנטיב, מונקו וסן טרופה",
+    licensed: "שירות נהג פרטי",
+    luxury: "שירות מותאם אישית",
+    nav: "ניווט",
+    home: "ראשי",
+    services: "שירותי נהג",
+    airport: "משדה התעופה ניס למונקו",
+    monaco: "מונקו ומונטה קרלו",
+    cannes: "קאן",
+    stTropez: "סן טרופה",
+    contact: "בקשת הצעת מחיר",
+    legal: "מידע משפטי ופרטיות (בצרפתית)",
+    premium: "השירותים שלנו",
+    transfers: "הסעות משדה התעופה ניס",
+    tours: "טיולים פרטיים",
+    business: "נסיעות עסקים וכנסים",
+    hourly: "נהג לפי שעה",
+    rights: "כל הזכויות שמורות.",
+    experience: "נהג פרטי בריביירה הצרפתית.",
+    urls: {
+      home: "/he/nice-airport-transfer-hebrew",
+      services: "/he/hourly-chauffeur-nice-hebrew",
+      airport: "/he/nice-airport-monaco-transfer-hebrew",
+      monaco: "/he/nice-monaco-transfer-hebrew",
+      cannes: "/he/nice-cannes-transfer-hebrew",
+      stTropez: "/he/nice-st-tropez-transfer-hebrew",
+      contact: "#booking-widget",
+      legal: "/mentions-legales-rgpd",
+      hourly: "/he/hourly-chauffeur-nice-hebrew"
+    }
   }
 };
 
-const labels = t[currentLang === 'en' ? 'en' : 'fr'];
+const labels = t[currentLang === 'en' || currentLang === 'he' ? currentLang : 'fr'];
 ---
 
 <footer class="site-footer" role="contentinfo" aria-label="Footer">

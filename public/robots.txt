@@ -1,12 +1,12 @@
 # robots.txt pour GALRIVIERA
-# https://www.galriviera.com
+# https://galriviera.com
 
 User-agent: *
 Allow: /
 Allow: /manifest.json
 
 # Sitemap généré par @astrojs/sitemap
-Sitemap: https://www.galriviera.com/sitemap-index.xml
+Sitemap: https://galriviera.com/sitemap-index.xml
 
 # Disallow admin et fichiers privés
 Disallow: /admin/

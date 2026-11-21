@@ -29,6 +29,8 @@ const t = {
     directWa: "Ou contacter GALRIVIERA directement sur WhatsApp",
     disclaimer: "Devis gratuit sans engagement. Les options (sièges enfants, accueil terminal, mise à disposition) sont confirmées selon disponibilité.",
     validationError: "Veuillez renseigner les champs obligatoires (départ, destination, date, heure, nom et coordonnées).",
+    invalidDate: "Veuillez choisir une date à partir d'aujourd'hui.",
+    invalidContact: "Veuillez saisir un numéro de téléphone ou une adresse e-mail valide.",
     sentConfirm: "Votre demande structurée est prête dans WhatsApp. Notre équipe vous répondra dans les meilleurs délais.",
     locations: {
       nice_airport: "Aéroport de Nice Côte d'Azur (NCE)",
@@ -74,6 +76,8 @@ const t = {
     directWa: "Or contact GALRIVIERA directly on WhatsApp",
     disclaimer: "Free, no-obligation quote. Special options (child seats, terminal meet & greet) are confirmed subject to availability.",
     validationError: "Please fill in all required fields (pick-up, drop-off, date, time, name and contact details).",
+    invalidDate: "Please choose today or a future date.",
+    invalidContact: "Please enter a valid phone number or email address.",
     sentConfirm: "Your structured quote request has been prepared in WhatsApp. Our team will get back to you shortly.",
     locations: {
       nice_airport: "Nice Côte d'Azur Airport (NCE)",
@@ -119,6 +123,8 @@ const t = {
     directWa: "או צרו קשר ישירות עם GALRIVIERA בוואטסאפ",
     disclaimer: "הצעת מחיר ללא התחייבות. תוספות (כיסאות ילדים, קבלת פנים בטרמינל) מאושרות בהתאם לזמינות.",
     validationError: "אנא מלאו את כל שדות החובה (איסוף, יעד, תאריך, שעה, שם ופרטי קשר).",
+    invalidDate: "יש לבחור תאריך מהיום ואילך.",
+    invalidContact: "יש להזין מספר טלפון או כתובת דוא״ל תקינים.",
     sentConfirm: "בקשתכם המפורטת הוכנה בוואטסאפ. הצוות שלנו יחזור אליכם בהקדם.",
     locations: {
       nice_airport: "שדה התעופה ניס (NCE)",
@@ -153,6 +159,8 @@ const isRtl = currentLang === 'he';
   dir={isRtl ? 'rtl' : 'ltr'}
   data-lang={currentLang}
   data-error={lang.validationError}
+  data-invalid-date={lang.invalidDate}
+  data-invalid-contact={lang.invalidContact}
   data-confirm={lang.sentConfirm}
 >
   <div class="booking-header">
@@ -478,10 +486,11 @@ const isRtl = currentLang === 'he';
     if (!widget || !form) return;
 
     const dateInput = document.getElementById('date');
-    if (dateInput) {
-      const today = new Date().toISOString().split('T')[0];
-      dateInput.setAttribute('min', today);
-    }
+    const localDate = () => {
+      const now = new Date();
+      return [now.getFullYear(), String(now.getMonth() + 1).padStart(2, '0'), String(now.getDate()).padStart(2, '0')].join('-');
+    };
+    if (dateInput) dateInput.setAttribute('min', localDate());
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -489,15 +498,19 @@ const isRtl = currentLang === 'he';
       const feedback = document.getElementById('booking-feedback');
       const requiredIds = ['pickup', 'dropoff', 'date', 'time', 'client-name', 'client-contact'];
       let isValid = true;
+      let firstInvalid = null;
 
       requiredIds.forEach((id) => {
         const el = document.getElementById(id);
         if (!el) return;
         if (!el.value || !el.value.trim()) {
           el.classList.add('input-invalid');
+          el.setAttribute('aria-invalid', 'true');
+          if (!firstInvalid) firstInvalid = el;
           isValid = false;
         } else {
           el.classList.remove('input-invalid');
+          el.removeAttribute('aria-invalid');
         }
       });
 
@@ -506,6 +519,23 @@ const isRtl = currentLang === 'he';
           feedback.textContent = widget.dataset.error || 'Veuillez compléter les champs obligatoires.';
           feedback.className = 'booking-feedback error';
         }
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
+
+      const contactInput = document.getElementById('client-contact');
+      const contact = contactInput.value.trim();
+      const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
+      const isPhone = /^[+\d\s().-]+$/.test(contact) && contact.replace(/\D/g, '').length >= 7;
+      const invalidField = dateInput.value < localDate() ? dateInput : (!isEmail && !isPhone ? contactInput : null);
+      if (invalidField) {
+        invalidField.classList.add('input-invalid');
+        invalidField.setAttribute('aria-invalid', 'true');
+        if (feedback) {
+          feedback.textContent = invalidField === dateInput ? widget.dataset.invalidDate : widget.dataset.invalidContact;
+          feedback.className = 'booking-feedback error';
+        }
+        invalidField.focus();
         return;
       }
 

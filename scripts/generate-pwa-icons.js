@@ -7,7 +7,7 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const logoPath = path.join(__dirname, '../public/assets/img/logo-galriviera.png');
+const logoPath = path.join(__dirname, '../public/assets/img/favicon/vtc-icon.svg');
 const outputDir = path.join(__dirname, '../public/assets/img/favicon');
 
 // Créer le dossier si nécessaire

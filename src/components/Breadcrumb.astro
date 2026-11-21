@@ -5,7 +5,7 @@ interface Props {
 
 const { items } = Astro.props;
 
-// Générer le Schema.org BreadcrumbList
+// Gï¿½nï¿½rer le Schema.org BreadcrumbList
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -13,7 +13,7 @@ const breadcrumbSchema = {
     "@type": "ListItem",
     "position": index + 1,
     "name": item.name,
-    "item": `https://www.galriviera.com${item.url}`
+    "item": `https://galriviera.com${item.url}`
   }))
 };
 ---
@@ -26,7 +26,7 @@ const breadcrumbSchema = {
       ) : (
         <span aria-current="page">{item.name}</span>
       )}
-      {index < items.length - 1 && <span class="breadcrumb-separator"> › </span>}
+      {index < items.length - 1 && <span class="breadcrumb-separator"> ï¿½ </span>}
     </>
   ))}
 </nav>

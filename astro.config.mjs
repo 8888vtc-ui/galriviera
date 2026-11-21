@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   output: 'static',
   adapter: netlify(),
-  site: 'https://www.galriviera.com',
+  site: 'https://galriviera.com',
   integrations: [sitemap()],
   build: {
     inlineStylesheets: 'auto',
